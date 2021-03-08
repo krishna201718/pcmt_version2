@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+th {
+font-size: 13px;
+text-align: center;
+}
+
+td {
+font-size: 13px;
+text-align: center;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+
+<p style="font-size: 16px;  text-align: center;"><strong>Report Card</strong></p>
+      <p style="font-size: 12px;"><strong>Email:</strong> {{user.email}}</p>
+      <p style="font-size: 12px;"><strong>University Registration No.:</strong> {{user.registration_no}} <strong>year</strong> {{user.year}}</p>
+      <p style="font-size: 12px;"><strong>University Roll No.:</strong> {{user.university_roll}}</p>
+	  <hr>
+<table id="customers" style="width: 100%">
+  <tr>
+    <th style="width: 5%;">Sl No.</th>
+    <th>Subject Name</th>
+    <th>Full Mark</th>
+          <th> Out of 25</th>
+    <th>University Roll No</th>
+      <th style="width: 10%;">Year</th>
+    <th style="width: 10%;">Semester</th>
+
+  </tr>
+
+    {%for res in result%}
+      <tr>
+          <td>{{forloop.counter0}}</td>
+        <td>{{res.subject.name}} <strong></strong></td>
+          <td>25</td>
+          <td>{{res.marks}}</td>
+
+
+      </tr>
+    {%endfor%}
+</table>
+
+</body>
+</html>

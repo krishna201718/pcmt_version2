@@ -1,0 +1,303 @@
+{%load static%}
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Application Download</title>
+<style >
+    @page {
+        size: letter portrait;
+
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 4pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+        padding: 0.2cm;
+            left: 15pt;
+            width: 580pt;
+            top: 15pt;
+            height: 750pt;
+            -pdf-frame-border: 1;    /* for debugging the layout */
+        }
+        @frame footer_frame {
+            -pdf-frame-content: footer_content;
+            left: 13pt; width: 512pt; top: 768pt; height: 20pt;
+        }
+
+    }
+
+</style>
+</head>
+<body>
+  <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">{{user.enrollment_no}}</div>
+
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">(c) - page <pdf:pagenumber>
+        of <pdf:pagecount>
+    </div>
+
+
+<table width="100%"  cellspacing="0" cellpadding="0" >
+  <tr style="margin-top: 30px;margin-left: 25px; padding: 10px;">
+    <td > <img  alt="Pcmt logo" src="../static/college/images/pcmt.png" width="100" height="100" /></td>
+    <td colspan="2">
+    <table >
+      <tr align="left"><td><h1  style="font-size: 25px;">Application Form. ({{year}})</h1></td></tr>
+      <tr align="left"><td><h1  >Application Form No. <strong style="color: red;">{{user.enrollment_no}}</strong></h1></td></tr>
+    </table>
+    </td>
+    <td align="center" >
+
+    </td>
+
+  </tr>
+  <tr>
+    <td style="font-size: 16px;">Course Applied for. <strong style="color: red;">*</strong> </td>
+    <td style="font-size: 12px;"><b>{{user.department}}</b></td>
+  </tr>
+
+</table>
+
+<!--personal details-->
+  <table width="100%" border="1" bordercolor="black" cellpadding="4" style="font-size: 13px;">
+  <tr >
+    <td colspan="2"><strong >Candidates  Name</strong></td><td colspan="2">{{user.first_name}} {{user.last_name}}</td>
+    <td><strong> Date of Birth</strong><td>{{user.dob}}</td> </td>
+
+    <td colspan="2" rowspan="4" align="center"><div ><img  alt="Pcmt logo" src="{{user.photo.path}}" width="100" height="100" /></div></td>
+  </tr>
+  <tr >
+    <td colspan="2"><strong > Father's Name</strong></td><td colspan="4">{{user.fathers_name}}</td>
+  </tr>
+      <tr >
+    <td colspan="2"><strong > Mother's Name</strong></td><td colspan="4">{{user.mothers_name}}</td>
+  </tr>
+      <tr >
+    <td ><strong > Nationality</strong></td><td>{{user.nationality}}</td>
+    <td><strong> Gender</strong><td>{{user.gender}}</td> </td>
+    <td><strong> Religion</strong><td>{{user.religion}}</td></td>
+  </tr>
+      <tr >
+    <td ><strong > Catergory:</strong></td><td>{{user.cast}}</td>
+    <td><strong> Email</strong><td style="font-size: 10px;">{{user.email}}</td> </td>
+    <td><strong> Mobile no.</strong><td>{{user.contact_no}}</td></td>
+        <td colspan="2" rowspan="3" align="center"><div ><img  alt="Pcmt logo" src="{{user.qr_code.path}}" width="160" height="160" /></div></td>
+  </tr>
+      <tr >
+    <td ><strong style="font-size: 10px;"> Languages Known</strong></td><td>{{user.mothers_tongue}}</td>
+    <td><strong> Blood Group</strong><td>{{user.blood_group}}</td> </td>
+    <td><strong> Aadhar card no.</strong><td>{{user.aadhar_card_no}}</td></td>
+  </tr>
+      <tr >
+    <td ><strong style="font-size: 10px;"> Address</strong></td><td colspan="2">21/1 gorachand road kolkata 700014</td>
+    <td><strong> City: </strong> ({{user.city}})</td>
+        <td><strong>State: </strong>({{user.state}})</td>
+        <td><strong>Country: </strong>({{user.country}})</td>
+  </tr>
+</table>
+
+<!--10+2 details-->
+{%if user.school_name_12 != ' '%}
+    <p style="font-size: 14px;">
+    <strong>Name of School / college or university which he /she was a student prior to this admission:-</strong>
+    <br><strong style="color: red;font-size: 15px;">Particular of 10+2 examinations passed: data entered must match exactly with marksheet</strong>
+  </p>
+
+  <table width="100%" border="1" bordercolor="black" cellpadding="4" style="font-size: 13px;">
+    <tr>
+      <td ><strong>Examination</strong></td> <td> 12th</td>
+      <td><strong>Name of School/College</strong> </td>
+      <td colspan="3">{{user.school_name_12}}</td>
+    </tr>
+        <tr>
+      <td ><strong>Board/University</strong></td> <td>{{user.board_12}}</td>
+      <td><strong>Address</strong> </td>
+      <td colspan="3">{{user.address12}}</td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" ><strong>Subjects wise marks</strong></td>
+      <td colspan="2" align="center" ><strong>School/College Location</strong></td>
+
+    </tr>
+        <tr>
+          <td ><strong>English</strong></td> <td >{{user.english}}</td>
+          <td ><strong>optional</strong></td> <td >{{user.optional}}</td>
+      <td ><strong>Year</strong></td> <td>{{user.year}}</td>
+    </tr>
+    <tr>
+      <td ><strong>Physics</strong></td> <td >{{user.physics}}</td>
+      <td ><strong>Aggregate</strong></td> <td >{{user.aggregate}}</td>
+      <td ><strong>City</strong></td> <td>{{user.city12}}</td>
+
+    </tr>
+    <tr>
+      <td ><strong>Chemistry</strong></td> <td >{{user.chemistry}}</td>
+            <td ><strong>Medium</strong></td> <td >{{user.medium_12}}</td>
+      <td ><strong>State</strong></td> <td>{{user.state}}</td>
+
+    </tr>
+    <tr>
+      <td><strong>Mathmatics</strong></td> <td >{{user.math}}</td>
+      <td ></td> <td ></td>
+      <td ><strong>Country</strong></td> <td>{{user.country12}}</td>
+
+    </tr>
+  </table>
+
+  {%endif%}
+
+<!--  entrance exam details-->
+  <p style="font-size: 14px;">
+    <br><strong style="color: red;font-size: 15px;">Details of entrance Examination</strong>
+  </p>
+  <table width="100%" border="1" bordercolor="black" cellpadding="4" style="font-size: 13px;">
+  <tr><td colspan="2"><strong>Name of Examination</strong></td> <td colspan="2">{{user.admission_cat}}</td>
+    <td><strong>Allotment Letter</strong></td> <td>{{user.allotment}}</td>
+  </tr>
+  <tr><td><strong>Conducted by</strong></td> <td>{{user.conducted_by}}</td>
+    <td><strong>Roll No.</strong></td> <td>{{user.roll_no}}</td>
+    <td><strong>Rank or %</strong></td> <td>{{user.rank}}</td>
+  </tr>
+ </table>
+
+
+
+<pdf:nextpage>
+<!--  10th exam details-->
+    <p style="font-size: 14px;">
+    <br><strong style="color: red;font-size: 15px;">10th Examination Details</strong>
+  </p>
+  <table width="100%" border="1" bordercolor="black" cellpadding="4" style="font-size: 13px;">
+    <tr>
+      <td ><strong>Examination</strong></td> <td>{{user.school_name_10}}</td>
+      <td><strong>Name of School/College</strong> </td>
+      <td colspan="3">asdfa</td>
+    </tr>
+        <tr>
+      <td ><strong>Board/University</strong></td> <td>{{user.board_10}}</td>
+      <td><strong>Address</strong> </td>
+      <td colspan="3">{{user.address10}}</td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" ><strong>Subjects wise marks</strong></td>
+      <td colspan="2" align="center" ><strong>School/College Location</strong></td>
+
+    </tr>
+        <tr>
+          <td ><strong>Subject 1</strong></td> <td >{{user.sub1}}</td>
+          <td ><strong>Subject 5</strong></td> <td >{{user.sub5}}</td>
+      <td ><strong>Year</strong></td> <td>{{user.passing_year_10}}</td>
+    </tr>
+    <tr>
+      <td ><strong>Subject 2</strong></td> <td >{{user.sub2}}</td>
+      <td ><strong>Aggregate</strong></td> <td >{{user.aggregate10}}</td>
+      <td ><strong>City</strong></td> <td>{{user.city10}}</td>
+
+    </tr>
+    <tr>
+      <td ><strong>Subject 3</strong></td> <td >{{user.sub3}}</td>
+      <td ><strong>Medium</strong></td> <td >{{user.medium_10}}</td>
+      <td ><strong>State</strong></td> <td>{{user.state10}}</td>
+
+    </tr>
+    <tr>
+      <td><strong>Subject 4</strong></td> <td >{{user.sub4}}</td>
+      <td colspan="2"></td>
+      <td ><strong>Country</strong></td> <td>{{user.country10}}</td>
+
+    </tr>
+  </table>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>
+
+<!--  Diploma Exam details-->
+{%if user.school_name_diploma != ' '%}
+        <p style="font-size: 14px;">
+    <br><strong style="color: red;font-size: 15px;">Diploma  Examination Details</strong>
+  </p>
+  <table width="100%" border="1" bordercolor="black" cellpadding="4" style="font-size: 13px;">
+    <tr>
+      <td ><strong>Examination</strong></td> <td>wbjee</td>
+      <td><strong>Name of School/College</strong> </td>
+      <td colspan="3">{{user.school_name_diploma}}</td>
+    </tr>
+        <tr>
+      <td ><strong>Board/University</strong></td> <td>{{user.board_diploma}}</td>
+      <td><strong>Address</strong> </td>
+      <td colspan="3">{{user.addressDiploma}}</td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center" ><strong>Subjects wise marks</strong></td>
+      <td colspan="3" align="center" ><strong>School/College Location</strong></td>
+
+    </tr>
+        <tr>
+          <td  rowspan="4" colspan="1"></td>
+          <td ><strong>Medium</strong></td> <td>{{user.medium_diploma}}</td>
+      <td ><strong>Year</strong></td> <td colspan="2">{{user.passing_year_Diploma}}</td>
+    </tr>
+    <tr>
+
+      <td ><strong>Aggregate</strong></td> <td >{{user.aggregateDiploma}}</td>
+      <td ><strong>City</strong></td> <td colspan="2">{{user.cityDiploma}}</td>
+
+    </tr>
+    <tr>
+
+      <td ><strong>Marks</strong></td> <td >{{user.marksDiploma}}</td>
+      <td ><strong>State</strong></td> <td colspan="2">{{user.stateDiploma}}</td>
+
+    </tr>
+    <tr>
+
+      <td ><strong>Division</strong></td> <td >{{user.division}}</td>
+      <td ><strong>Country</strong></td> <td colspan="2">{{user.countryDiploma}}</td>
+
+    </tr>
+  </table>
+  {%endif%}
+  <br>
+  <br>  <br>
+  <br>
+  <pdf:nextpage>
+      <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>
+  <p STYLE="color: red;font-size:13px;text-decoration: underline;">ADDITIONAL INFORMATION</p>
+  <p STYLE="font-size:12px;"> <strong>Do you want avail hostel -</strong> Yes</p>
+  <p STYLE="font-size:12px;"> <strong>Are you planning to take educational loan-</strong> Yes</p>
+  <p STYLE="font-size:16px;">-----------------------------------------------------------------------------------------------------------------------------------------------</p>
+    <br>
+  <br>  <br>
+  <br>  <br>
+  <h1 STYLE="color: red;">Declaration:</h1>
+  <ul>
+    <li><p STYLE="font-size:16px;">1. I hereby declare that the information provided by me is true & subject to verification by PCMT</p></li>
+    <li><p STYLE="font-size:16px;">2. I hereby agree to have seen, read and completely understand the rules & regulations and other information supplied by the PCMT before my admission</p></li>
+    <li><p STYLE="font-size:16px;">3. I hereby agree to follow all the rules & regulations as specitfied in the student Brochure which may be modified from time to time, if granted admission.</p></li>
+  </ul>
+  <br>
+  <br>
+    <br>
+  <br>
+    <br>
+  <br>
+   <table width="100%"  cellpadding="4" style="font-size: 16px;">
+     <tr>
+       <td align="center">Signature of Father / Guardian</td>
+       <td align="center">Signature of student</td>
+     </tr>
+     <td align="center">Date</td>
+       <td align="center">Date</td>
+   </table>
+  
+</body>
+</html>

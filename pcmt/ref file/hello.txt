@@ -1,0 +1,119 @@
+ # wbjee or main
+        user.admission_cat = request.POST.get('admission_cat')
+        user.conducted_by = request.POST.get('conducted_by')
+        user.rank = request.POST.get('rank')
+        user.roll_no = request.POST.get('roll_no')
+
+        user.allotment = request.POST.get('allotment')
+        user.admit_card = request.FILES.get('admit_card')
+        user.rand_card = request.FILES.get('rank_card')
+        user.roll_no = request.POST.get('roll_no')
+
+        # classs 10
+        user.school_name_10 = request.POST.get('school_name_10')
+        user.board_10 = request.POST.get('board_10')
+        user.medium_10 = request.POST.get('medium_10')
+
+        user.address10 = request.POST.get('address10')
+        user.city10 = request.POST.get('city10')
+        user.state10 = request.POST.get('state10')
+        user.country10 = request.POST.get('country10')
+        user.passing_year_10 = request.POST.get('passing_year_10')
+
+        user.sub1 = request.POST.get('sub1')
+        user.sub2 = request.POST.get('sub2')
+        user.sub3 = request.POST.get('sub3')
+        user.sub4 = request.POST.get('sub4')
+        user.sub5 = request.POST.get('sub5')
+        user.aggregate10 = request.POST.get('aggregate10')
+
+        user.mark10 = request.FILES.get('mark10')
+        user.admit10 = request.FILES.get('admit10')
+        user.certificate10 = request.FILES.get('certificate10')
+
+        if request.POST.get('diploma_or_12') == '12th':
+            user.school_name_12 = request.POST.get('school_name_12')
+            user.board_12 = request.POST.get('board_12')
+            user.medium_12 = request.POST.get('medium_12')
+
+            user.address12 = request.POST.get('address12')
+            user.city12 = request.POST.get('city12')
+            user.state12 = request.POST.get('state12')
+            user.country12 = request.POST.get('country12')
+            user.passing_year_12 = request.POST.get('passing_year_12')
+
+            user.english = request.POST.get('english')
+            user.chemistry = request.POST.get('chemistry')
+            user.physics = request.POST.get('physics')
+            user.math = request.POST.get('math')
+            user.optional = request.POST.get('optional')
+            user.aggregate12 = request.POST.get('aggregate12')
+
+            user.mark12 = request.FILES.get('mark12')
+            user.admit12 = request.FILES.get('admit12')
+            user.certificate12 = request.FILES.get('certificate12')
+
+        elif request.POST.get('diploma_or_12') == 'diploma':
+            user.school_name_diploma = request.POST.get('school_name_diploma')
+            user.board_diploma = request.POST.get('board_diploma')
+            user.medium_diploma = request.POST.get('medium_diploma')
+
+            user.addressDiploma = request.POST.get('addressDiploma')
+            user.cityDiploma = request.POST.get('cityDiploma')
+            user.stateDiploma = request.POST.get('stateDiploma')
+            user.countryDiploma = request.POST.get('countryDiploma')
+            user.passing_year_Diploma = request.POST.get('passing_year_Diploma')
+
+            user.marksDiploma = request.POST.get('marksDiploma')
+            user.aggregateDiploma = request.POST.get('aggregateDiploma')
+            user.division = request.POST.get('division')
+            user.markDiploma = request.FILES.get('markDiploma')
+            user.certificateDiploma = request.FILES.get('certificateDiploma')
+
+        else:
+            # 12th
+            user.school_name_12 = request.POST.get('school_name_12')
+            user.board_12 = request.POST.get('board_12')
+
+            user.address12 = request.POST.get('address12')
+            user.city12 = request.POST.get('city12')
+            user.state12 = request.POST.get('state12')
+            user.country12 = request.POST.get('country12')
+            user.passing_year_12 = request.POST.get('passing_year_12')
+
+            user.english = request.POST.get('english')
+            user.chemistry = request.POST.get('chemistry')
+            user.physics = request.POST.get('physics')
+            user.math = request.POST.get('math')
+            user.optional = request.POST.get('optional')
+            user.aggregate12 = request.POST.get('aggregate12')
+
+            user.mark12 = request.FILES.get('mark12')
+            user.admit12 = request.FILES.get('admit12')
+            user.certificate12 = request.FILES.get('certificate12')
+
+            # diploma
+            user.school_name_diploma = request.POST.get('school_name_diploma')
+            user.board_diploma = request.POST.get('board_diploma')
+
+            user.addressDiploma = request.POST.get('addressDiploma')
+            user.cityDiploma = request.POST.get('cityDiploma')
+            user.stateDiploma = request.POST.get('stateDiploma')
+            user.countryDiploma = request.POST.get('countryDiploma')
+            user.passing_year_Diploma = request.POST.get('passing_year_Diploma')
+
+            user.marksDiploma = request.POST.get('marksDiploma')
+            user.aggregateDiploma = request.POST.get('aggregateDiploma')
+            user.division = request.POST.get('division')
+            user.markDiploma = request.FILES.get('markDiploma')
+            user.certificateDiploma = request.FILES.get('certificateDiploma')
+
+        user.loan = request.POST.get('loan')
+        user.hostel = request.POST.get('hostel')
+        user.saveQrCode()
+        user.save()
+        return HttpResponse('<h1>Submmited Successfully</h1>')
+    # except:
+        msg = "Email already existed "
+        color = 'danger'
+        return render(request, 'new_enrollment.html', {'msg': msg, 'color': color})

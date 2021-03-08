@@ -1,0 +1,349 @@
+{%load static %}
+
+<link rel="stylesheet" href="{%static 'college/css/custome.css' %}">
+
+
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+}
+  .sidebar {
+  transform: translateX(-120%);
+  display: inline-block;
+  height: 100vh;
+  background: lightblue;
+  transition: all 0.3s ease-in;
+  width: 200px;
+}
+.active {
+  transform: translateX(0);
+}
+
+</style>
+
+<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+</a>
+<nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+        <div class="sidebar-brand">
+            <a href="#">Dashboard</a>
+            <div id="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <!-- start staff  user information-->
+        <div class="sidebar-header">
+            <div class="user-pic">
+                <img class="img-responsive img-rounded" src="{{request.session.image}}"
+                     alt="User picture">
+            </div>
+            <div class="user-info">
+          <span class="user-name"> {{request.session.first_name}}  {{request.session.last_name}}
+
+          </span>
+                {%if request.user.is_HOD %}
+                    <span class="user-role"><h1>HOD  </h1></span>
+                {%elif request.user.is_BOC %}
+                <span class="user-role"><h3>Batch Cordinator (BC)</h3></span>
+                {%elif request.user.is_teacher %}
+                    <span class="user-role"><h1>Teacher</h1></span>
+                {%elif request.user.is_student %}
+                    <span class="user-role"><h1>Student</h1></span>
+                {%endif%}
+                <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+            </div>
+        </div>
+        <!-- end staff  user information-->
+
+
+
+
+        <!-- sidebar-header  -->
+        <div class="sidebar-search">
+            <div>
+                <div class="input-group">
+                    <input type="text" class="form-control search-menu" placeholder="Search...">
+                    <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+            <ul>
+                <li class="header-menu">
+                    <span>General</span>
+                </li>
+{% if request.user.is_staff and not request.user.is_admin%}
+<li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admission</span>
+                        <span class="badge badge-pill badge-warning">New</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+
+                            <li>
+                                <a href="{%url 'college:studentsRegistration' %}">Registration
+                                    <span class="badge badge-pill badge-success">Pro</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Edit Student information</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'college:admission_data' %}">View Student information</a>
+                            </li>
+                        </ul>
+<!-- End Student registration-->
+{%else%}
+<!-- Start Student Attendance-->
+
+<!-- start Student registration-->
+
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Student</span>
+                        <span class="badge badge-pill badge-warning">New</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                          {%if  request.user.is_admin%}
+                            <li>
+                                <a href="{%url 'college:studentsRegistration' %}">Registration
+                                    <span class="badge badge-pill badge-success">Pro</span>
+                                </a>
+                            </li>
+                          {%endif%}
+                            <li>
+                                <a href="#">Edit Student information</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'college:student_data_view' %}">View Student information</a>
+                            </li>
+                        </ul>
+<!-- End Student registration-->
+
+<!-- Start Student Attendance-->
+
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-university"></i>
+                        <span>Attendance</span>
+                        <span class="badge badge-pill "></span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            {%if request.user.is_HOD or request.user.is_admin or request.user.is_teacher%}
+                            <li>
+                                <a href="{%url 'college:attendance'%}"> Add Attendance </a>
+                            </li>
+                            <li>
+                                <a href="#"> Edit Attendance </a>
+                            </li>
+                            {%endif%}
+                            <li>
+
+                                <a href="{%url 'college:attendance_view'%}"> View Attendance </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- end Student Attendance-->
+
+<!-- Start Exam-->
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-certificate"></i>
+                        <span>Exam</span>
+                        <span class="badge badge-pill "></span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            {%if request.user.is_HOD or request.user.is_admin or request.user.is_teacher%}
+                            <li>
+                                <a href="{%url 'college:add_question'%}"> Add Question </a>
+                            </li>
+                            <li>
+                                <a href="#"> Edit Question </a>
+                            </li>
+                            <li>
+                                <a href=""> View Question </a>
+                            </li>
+                            <li>
+                                <a href=""> Exam Registration </a>
+                            </li>
+                            <li>
+                                <a href="{%url 'college:exam_information' %}"> Exam Details </a>
+                            </li>
+                             <li>
+                                <a href="{%url 'college:exam'%}"> Take Test </a>
+                            </li>
+
+                            {%else%}
+                            <li>
+                                <a href="{%url 'college:exam'%}"> Take Test </a>
+                            </li>
+                             <li>
+                                <a href="{%url 'college:view_reports'%}"> View reports</a>
+                            </li>
+                            {%endif%}
+                        </ul>
+                    </div>
+                </li>
+<!-- end Exam-->
+
+
+
+
+
+                <!-- start mark-->
+                {%if request.user.is_HOD or request.user.is_admin or request.user.is_teacher %}
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="far fa-gem"></i>
+                        <span>Marks</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="{%url 'college:add_mark'%}">Add marks</a>
+                            </li>
+                            <li>
+                                <a href="#">Edit marks</a>
+                            </li>
+
+                            <li>
+                                <a href="#">View Report card</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <!-- start mark-->
+                {%endif%}
+                <!-- start Student fees-->
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-chart-line"></i>
+                        <span>Fees</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">Student Fees View</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <!-- end Student fees-->
+
+                <!--staff -->
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span>Staffs</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            {%if request.user.is_HOD or request.user.is_admin  %}
+                            <li>
+                                <a href="{%url 'college:create_staff'%}">Create staff</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'college:subject_assign'%}">Assign Subject</a>
+                            </li>
+                            {%endif%}
+
+                            <li>
+                                <a href="{%url 'college:view_staff'%}">View Staff</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!--Subject-->
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>Subject</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            {%if request.user.is_HOD or request.user.is_admin  %}
+                                <li>
+                                    <a href="{%url 'college:create_subject'%}">Create subject</a>
+                                </li>
+                                <li>
+                                    <a href="{%url 'college:subject_assign'%}">Assign Subject</a>
+                                </li>
+                            {%endif%}
+                                <li>
+                                <a href="{%url 'college:view_subjects'%}">View Subject</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="header-menu">
+                    <span>Extra</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>Account Settings</span>
+                        <span class="badge badge-pill badge-primary">Beta</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa fa-calendar"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>Routine</span>
+                    </a>
+                </li>
+            </ul>
+            {%endif%}
+        </div>
+
+        <!-- sidebar-menu  -->
+    </div>
+
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+        <a href="#">
+            <i class="fa fa-bell"></i>
+            <span class="badge badge-pill badge-warning notification"></span>
+        </a>
+        <a href="#">
+            <i class="fa fa-envelope"></i>
+            <span class="badge badge-pill badge-success notification"></span>
+        </a>
+        <a href="#">
+            <i class="fa fa-cog"></i>
+            <span class="badge-sonar"></span>
+        </a>
+        <a href="{%url 'college:logout' %}">
+            <i class="fa fa-power-off"></i>
+        </a>
+    </div>
+</nav>
+<!-- sidebar-wrapper  -->
+

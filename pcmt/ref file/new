@@ -1,0 +1,229 @@
+
+{%extends 'base.html' %}
+{%load static%}
+{%block sidebar %}
+    {%include 'side.html' %}
+{%endblock %}
+
+{%block content%}
+<!--content area start-->
+<section class="component-section" id="employee">
+    <div class="d-flex align-items-center pb-3">
+        <div>
+            <!-- Title -->
+            <h1>Staff</h1>
+            <!-- End Title -->
+            <!--breadcrum start-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb pmd-breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">View Staff</li>
+
+                </ol>
+            </nav>
+            <!--breadcrum end-->
+        </div>
+
+
+    </div>
+        <div class="card pmd-card">
+            <div class="search-bar card-body">
+                <div class="row d-flex align-items-center">
+                    <div class="col">
+<!-- Form Component -->
+                        <div class="d-md-block d-none">
+                            <form class="search-form" style="margin-top: -10px;" method="post">
+                                <div class="form-row">
+<!-- year-->
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
+                                            <label for="department">Year</label>
+                                            <select name="go_year" id="go_year" class="form-control">
+                                                <option></option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
+                                            </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+<!-- semster-->
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
+                                        <label>Semester</label>
+                                        <select name="go_semester" id="go_semester" class="form-control">
+                                            <option></option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+
+                                    <div class="col-md-1 col-lg-2 mt-4">
+                                        <button class="btn btn-primary pmd-ripple-effect pmd-btn-raised" id="search">Go</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <h3 class="card-title advanced-search-title mb-0">Advanced Search</h3>
+                        </div>
+<!-- Form Component End -->
+
+                    </div>
+                    <!-- Right Menu -->
+                    <div class="col-auto d-none d-md-flex justify-content-end">
+                        <ul class="nav border-0">
+                            <li class="nav-item mr-2">
+                                <a title="Advance Search" class="btn pmd-btn-fab btn-outline-dark nav-link btn-sm" data-toggle="collapse" href="#advanceSearch" role="button" aria-expanded="false" aria-controls="advanceSearch" id="advanced-search-toggler">
+                                    <i class="pmd-icon-circle pmd-icon-sm">
+                                        <svg viewBox="0 0 24 24">
+                                            <g><g>
+                                                <path d="M9.072,21.162v-9.81L2.214,3.41C1.847,2.961,1.889,2.037,2.837,2.037h18.292
+                                                        c0.892,0,1.098,0.816,0.624,1.373l-6.693,7.732v6.069c0,0.248-0.083,0.458-0.293,0.624l-4.28,3.95
+                                                        C9.992,22.151,9.072,21.954,9.072,21.162z M4.668,3.703l5.864,6.775c0.124,0.165,0.207,0.334,0.207,0.54v8.272l2.659-2.412v-6.024
+                                                        c0-0.207,0.083-0.375,0.206-0.541l5.694-6.61H4.668L4.668,3.703z"></path>
+                                            </g></g>
+                                        </svg>
+                                    </i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown pmd-dropdown">
+                                    <a href="javascript:void(0);" role="button" class="pmd-btn-fab btn-outline-dark btn btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Sort">
+                                        <i class="material-icons">sort</i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="false" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="clip: rect(0px, 160px, 0px, 160px); transform: translate3d(-120px, 0px, 0px);">
+                                        <h6 class="dropdown-header">Sort By</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="javascript:void(0);" title="Name" class="dropdown-item">Name</a>
+                                        <a href="javascript:void(0);" title="Sector" class="dropdown-item">Designation</a>
+                                        <a href="javascript:void(0);" title="Training Status" class="dropdown-item">Email</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+<!-- Advance Search Form -->
+                <form method="post">
+                    {%csrf_token%}
+                <div class="collapse" id="advanceSearch">
+                    <div class="row mt-2">
+<!--roll No-->
+                        <div class="col-12 col-md-4">
+                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                <label for="employee_ID">Email</label>
+                                <input type="text" class="form-control" name="email"><span class="pmd-textfield-focused"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button  title="Apply Filter" class="btn-primary btn pmd-btn-raised pmd-ripple-effect" id="apply-filter">Apply Filter</button>
+                        </div>
+                    </div>
+                </div>
+             </form>
+
+
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <!-- Grid View End -->
+
+            <!-- List View Start -->
+            <div role="tabpanel" class="tab-pane active show" id="listView">
+                <div class="card pmd-card">
+                    <!-- Table -->
+                    <div id="example_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer"><div class="card-header d-flex flex-row"><div class="data-table-title-responsive"><h2 class="card-title">Table Responsive</h2></div><div class="search-paper pmd-textfield ml-auto"><div id="example_filter" class="dataTables_filter"><label><input type="search" class="form-control form-control-sm" placeholder="Search" aria-controls="example"><span class="pmd-textfield-focused"></span></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example" class="table pmd-table table-hover display dt-responsive nowrap dataTable no-footer dtr-column collapsed" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
+                        <thead class="thead-light">
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 216px;" aria-label="Name: activate to sort column ascending">Name</th>
+                                <th class="control sorting_asc" rowspan="1" colspan="1" style="width: 180px;" aria-label="Designation">Department</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 56px;" aria-label="ID: activate to sort column ascending">Phone</th>
+<!--                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 56px;" aria-label="ID: activate to sort column ascending">Semester</th>-->
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 128px;" aria-label="Email Address: activate to sort column ascending">Email Address</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 110px;" aria-label="Department: activate to sort column ascending">Desgination</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 0px; display: block; " aria-label="Actions: activate to sort column ascending">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for person in user%}
+                        <tr role="row" class="odd">
+                                <td data-title="Name" style="">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../media/{{person.image}}" alt="Profile Picture" class="rounded-circle mr-3" width="60" height="60">
+                                            <div class="media-body">
+                                                {{person.first_name}} {{person.last_name}}
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td data-title="ID" style="">{{person.phone}}</td>
+<!--                            <td data-title="ID" style="">{{person.semester}}</td>-->
+                                <td data-title="Email Address" style=""><a href="mailto:{{person.email}}">{{person.email}}</a></td>
+                                {%if person.is_teacher or person.is_admin%}
+                                        {%if person.is_HOD%}
+                                            <td data-title="Department" style="color: red; white-space: -o-pre-wrap;
+                                             word-wrap: break-word !important;
+                                             white-space: pre-wrap !important;
+                                             white-space: -moz-pre-wrap !important;
+                                             white-space: -pre-wrap !important; ">Teacher and HOD</td>
+                                        {%elif person.is_BOC%}
+                                            <td data-title="Department" style="color: red;
+                                             white-space: -o-pre-wrap !important;
+                                             word-wrap: break-word !important;
+                                             white-space: pre-wrap !important;
+                                             white-space: -moz-pre-wrap !important;
+                                             white-space: -pre-wrap !important; ">Teacher and BOC</td>
+                                         {%else%}
+                                            <td data-title="Department" >Teacher </td>
+                                        {%endif%}
+                                {%endif%}
+                                <td data-title="Date of Joining" style="display: none;">{{person.year}}</td>
+                                <td data-title="" style="display: block;">
+                                    <a href="{%url 'college:profile' person.id %}" class="btn pmd-btn-fab pmd-btn-flat btn-primary pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">visibility</i></a>
+                                    <a href="employee-detail.html" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">edit</i></a>
+                                    <a href="javascript:void(0);" title="Delete" class="btn pmd-btn-fab pmd-btn-flat btn-danger pmd-ripple-effect btn-sm" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons pmd-sm">delete_outline</i></a>
+                                </td>
+
+                            </tr>
+                        {%endfor%}
+
+                        </tbody>
+                    </table></div></div><div class="card-footer"><div class="pmd-datatable-pagination"><div class="dataTables_length" id="example_length"><label><span class="custom-select-title">Rows per page:</span> <span class="pmd-custom-select"> <select name="example_length" aria-controls="example" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </span></label></div><div class="dataTables_info" id="example_info" role="status" aria-live="polite"> 1 - 10 of 10 </div><div class="dataTables_paginate paging_simple" id="example_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link"> </a></li><li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link"> </a></li></ul></div></div></div></div>
+                </div>
+            </div>
+            <!-- List View End -->
+        </div>
+    </section>
+<!-- content area end -->
+{%endblock%}
+
+
+
+
+<!--department -->
+           <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="department">
+                <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+              </select>
+              <label for="floatingSelectGrid">Department</label>
+            </div>
+          </div>

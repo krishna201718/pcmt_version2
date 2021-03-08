@@ -1,0 +1,547 @@
+
+<html>
+    <head>
+        <title>Reading Right</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha512-c93ifPoTvMdEJH/rKIcBx//AL1znq9+4/RmMGafI/vnTFe/dKwnn1uoeszE2zJBQTS1Ck5CqSBE+34ng2PthJg==" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link rel="stylesheet" href="/static/readingapp/css/loader.css"/>
+        <link rel="stylesheet" href="/static/readingapp/css/style.css"/>
+        <script src="/static/readingapp/js/custom.js"></script>
+        <script src="/static/readingapp/js/custom2.js"></script>
+        <script src="/static/readingapp/js/loader.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+        <base href="https://www.readingright.in/"/>
+        <link rel="apple-touch-icon" sizes="57x57" href="/static/readingapp/images/fabicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/static/readingapp/images/fabicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/static/readingapp/images/fabicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/static/readingapp/images/fabicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/static/readingapp/images/fabicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/static/readingapp/images/fabicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/static/readingapp/images/fabicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/static/readingapp/images/fabicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/readingapp/images/fabicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/static/readingapp/images/fabicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/readingapp/images/fabicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/static/readingapp/images/fabicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/readingapp/images/fabicon/favicon-16x16.png">
+        <link rel="manifest" href="/static/readingapp/images/fabicon/manifest.json">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+        <!--Calendar.js cdn-->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.0.0/main.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.0.0/main.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.0.0/locales-all.min.js"></script>
+
+        <!--Select2 cdn-->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/tooltip-js@3.0.0/dist/tooltip.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/static/readingapp/images/fabicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="google-site-verification" content="gfkenBr0PQz71SZ7ydYqrD_0WleuTwRFz3LISUTju3M" />
+
+        <!-- custom ck editor -->
+        <script src="/static/explainer/ckeditor.js"></script>
+
+        <!-- Tags Input -->
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
+
+        <!--At who.js for user tagging-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Caret.js/0.3.1/jquery.caret.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/at.js/1.5.0/js/jquery.atwho.min.js"></script>
+
+        <!--Extra Script ADDED-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-en.min.js" integrity="sha512-Ij9UYYVaoKa/v7gg8ImceAH416VUcHygRY7O3hwo4tFjq9/HeqpvuhdkNZJZRqBmvf4/I9XetDHzO1z4V0HfPw==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js" integrity="sha512-MKqdT8JgKftxlK6oK4S+Hh44ivKyaPncl6qN9JZEGKJGQZJMiSoPzehLcbvd/1XMieEP1Q4A3wzzhTrvBUUcUQ==" crossorigin="anonymous"></script>
+
+        <!--Date picker-->
+        <!--CSS here and js CDN script add in respective file(See there)-->
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Light Box -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css"/>
+    </head>
+    <div id="fakeloader" style="z-index: 9"></div>
+    <body style="display: none;">
+
+        <!-- Naviagtion Bar Start-->
+        <nav class="navbar navbar-expand-xl navbar-dark bg-custom fixed-top nav-custom" id="nav-change" style="display:none;">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/static/readingapp/images/logo_white.png" class="nav-logo" id="logo"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#story">
+                        Our Story & Work
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="javascript:void(0)" onclick="comingSoon();">
+                        Our team
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#classes">Classes and Workshops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="media" id="media">Media</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="career" id="career">Careers</a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="animation" id="animation">Animation</a>
+                    </li>
+                    -->
+                    <!--<li class="nav-item mt-n2">
+                        <a class="nav-link" href="shadow-startup" id="shadow"></a>
+                    </li>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="shadow">
+                          <sup style=""><img class="mt-n3 ml-n4" src="/static/readingapp/images/new_2.gif" height="50px"></sup><span style="margin-left: -20px;">Shadow a Startup</span>
+                        </a>
+                        <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="shadow-startup-schools">For Schools</a>
+                          <a class="dropdown-item" href="shadow-startup-colleges-and-professionals">For Colleges & Professionals</a>
+                        </div>
+                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us" id="contact">Contact us</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" onclick="comingSoon();">Login</a>
+                    </li>-->
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <!-- Naviagtion Bar End-->
+
+        
+
+
+        <div class="parallax" style="background-image: url('/static/readingapp/images/rr_news2.jpg');"></div>
+        <!--<div class="video-background-holder">
+            <div class="video-background-overlay"></div>
+            IMAGE - https://res.cloudinary.com/sodiarc/image/upload/v1579873070/readingright/bg.webp
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+            </video>
+        </div>-->
+
+        <!-- Background Image End-->
+        <!-- About Section -->
+        <div class="container" id="story">
+            <h1 class="section-heading text-center">OUR <span class="text-bold">STORY & WORK</span></h1>
+            <div class="section-text">
+                
+
+                <p>Reading Right is the only organisation to have established a whole new system of education solely based on news articles. Our three step process is what makes news learning full proof.</p>
+
+<ol>
+	<li>With a team of expert researchers our primary focus is to carefully select articles from a wide range of national and international newspapers, so as to pick only that which is most pertinent to readers. In a world full of balderdash it is of utmost importance for an aspirant to invest time effectively in value adding content and we endeavour that.</li>
+	<li>Thereafter our research faculty builds simple explanations to every news article selected so as to cover all of the following:
+	<ul>
+		<li>Context - Each article topic has a setting or backdrop with which it is identified in the industry or economy. Context covers everything a reader needs to know so as to understand the article easily even without having read anything about that topic before.</li>
+		<li>Concept- Every article has a set of terms that we call the key concepts one must know to be able to understand the article. These are explained well for the readers.</li>
+		<li>Concept in context- It might be that Readers know of the terms or words in the article but are unable to make sense of the line or paragraph. Concept in context addresses just that as it ensures that readers can thoroughly understand what each article implies.</li>
+	</ul>
+	</li>
+	<li>Finally our team curates interesting videos to analyse the articles for our readers so as to carve a logical learning paradigm. The analysis is done using our meticulously crafted modules.<br />
+	Some of our modules include:
+	<ul>
+		<li>Stakeholder Analysis: Every news piece stirs up a segment in society, this module deep dives into learning which segments can stir or are stirred by the particular news piece.</li>
+		<li>Impact Analysis: We believe news reading is incomplete without analysing the impact not just by who but also how. This module is linked to the stakeholder analysis.</li>
+		<li>Structuring: Everything is a mess till you structure it right. A great module for understanding problem solving in organisations.</li>
+		<li>Parallel Drawing: When we create hypothetical scenarios and domino effects!</li>
+		<li>Retention &amp; Reuse: Well, what is really the point of reading so much news when you cannot remember anything or reproduce it in situations that demand it!</li>
+	</ul>
+	</li>
+</ol>
+
+<p>Founded in September 2013, the organisation boasts of a research wing that extracts articles from 50+ local, national and international newspapers supported by a gigantic database consisting of periodicals, journals &amp; scholar articles.</p>
+
+<p>Our teaching strategies require coming down to the bare basics be it the language, diction or the underlying concept. We not only try and ensure careful explanation but also an equally cared for allocation of articles. By way of this we guarantee a holistic learning experience, rendering them habituated to good reading, and of course regular news learning. We intend to transform our students from being individuals who shrug away from daily newspapers and fail to understand it into being thorough news readers and learners. We finish what educational institutes in our country start. All in all, if you don&#39;t understand news it is no longer your problem, it is now ours!</p>
+
+                
+
+            </div>
+        </div>
+        <!-- About Section End-->
+        <div class="section-gap"></div>
+        <div class="parallax section-heights" style="background-image: url('/static/readingapp/images/section_image1.jpg');"></div>
+        <!-- Why Section -->
+        <div class="container" id="classes">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-heading text-center"><span class="text-bold">CLASSES</span> & <span class="text-bold">WORKSHOPS</span></h1>
+                    <div class="section-text">
+
+                        
+
+                        <p>The classes at Reading Right are designed to provide highly noetic and fast paced learning environs where prompt critical thinking is an absolute necessity! Our pedagogy ensures rigorous in-class practice of modules and thorough understanding of concepts. Not only do our experts elucidate all concepts with immense detail but also simplify them using carefully crafted illustrations! Whoever says newspaper reading is &#39;boring&#39;, &#39;difficult&#39; or &#39;Greek&#39; most definitely hasn&#39;t experienced our classes! Stay tuned to know about upcoming programs, sessions &amp; workshops in your city! To sign up for our courses, please fill out the form below and we will reach out to you at our earliest!</p>
+
+                        
+                        <center><button class="btn btn-custom text-center" data-toggle="modal" data-target="#myModal">REGISTER</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Why Section End-->
+        <div class="section-gap"></div>
+        <div class="parallax section-heights" style="background-image: url('/static/readingapp/images/section_image3.jpg');"></div>
+        <div class="container">
+            <h1 class="section-heading text-center"><span class="text-bold">COURSES</span> & <span class="text-bold">PROGRAMS</span></h1>
+            <center>
+                <div class="row">
+                    <div class="col-lg-4 p-3">
+                        <!--<img src="/static/readingapp/images/basic.png" class="icons">-->
+                        <h1 class="text-center text-bold">BASIC</h1>
+                        <div class="section-text">
+                            This includes covering all topics under current affairs, absolutely all; but as a general overview.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-3">
+                        <!--<img src="/static/readingapp/images/advanced.png" class="icons">-->
+                        <h1 class="text-center text-bold">ADVANCED</h1>
+                        <div class="section-text">
+                            This course focuses on a particular area of interest -Business & Economy, Law, Politics, Economics, Sports, etc.
+                        </div>
+                    </div>
+                    <div class="col-lg-4 p-3">
+                        <!--<img src="/static/readingapp/images/expert.png" class="icons" id="expert">-->
+                        <h1 class="text-center text-bold">EXPERT</h1>
+                        <div class="section-text">
+                            An enhanced version of our ADVANCED course, in this course the news articles are critically analysed and assessed.
+                        </div>
+                    </div>
+                </div>
+            </center>
+            <div class="section-gap"></div>
+            <!--<center><button class="custom-button text-center">Read More</button></center>-->
+            <!--<div class="section-gap"></div>-->
+        </div>
+        <div class="parallax section-heights" style="background-image: url('/static/readingapp/images/section_last.jpg');"></div>
+        <div class="testimonial">
+            <div class="container">
+                <h1 class="section-heading text-center"><span class="text-bold"><span class="text-bold">TESTIMONIALS</span></h1>
+                <!-- Quote Image -->
+                <center>
+                    <img src="https://i.imgur.com/gZ5HY0U.png" class="img-responsive quote-image">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+
+                            <!--
+                            
+                            <li data-target="#carouselExampleCaptions" data-slide-to="0"></li>
+                            
+                            -->
+
+                          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+
+                            <!--
+                            
+                            <div class="carousel-item">
+                                <p class="d-block w-100 col-lg-6"><p>It was a great experience where we learnt an efficient way to read newspapers, understand them</p>
+
+<p>&amp; comfortably form the gist of any article/para in the minimum amount of time.</p>
+
+<p>I felt it improved our communication skills as well.</p></p>
+                                <p class="person"><p><span style="color:#d97e79">- Harsh Burman, St. Xavier&#39;s B.Com (M)<br />
+Attended the business newspapers course</span></p></p>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <p class="d-block w-100 col-lg-6"><p>Reading Right has a concept that is very timely and with the way they have structured it, it is highly impactful.</p></p>
+                                <p class="person"><p><span style="color:#d97e79">- Akshay Rampuria, Founder Openhouse</span></p></p>
+                            </div>
+                            
+                            -->
+
+                          <div class="carousel-item active">
+                            <p class="d-block w-100 col-lg-6">It was a great experience where we learnt an efficient way to read newspapers, understand them & comfortably form the gist of any article/para in the minimum amount of time. I felt it improved our communication skills as well.</p>
+                            <p class="person">- Harsh Burman, St. Xavier's B.Com (M) <br> Attended the business newspapers course</p>
+                          </div>
+                          <div class="carousel-item">
+                            <p class="d-block w-100 col-lg-6">Reading Right has a concept that is very timely and with the way they have structured it, it is highly impactful.</p>
+                            <p class="person">- Akshay Rampuria, Founder Openhouse</p>
+                          </div>
+                          <div class="carousel-item">
+                            <p class="d-block w-100 col-lg-6">The Newspaper Reading class was a one of its kind experience which exposed me to a variety of ideas I had never been exposed to. Ever since then I have improved my English skills and have developed  the interest to be updated on the recent happenings as well.</p>
+                            <p class="person">- Manavi, Class 8, La Martiniere for Girls School. <br> Attended the General newspaper program.</p>
+                          </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                </center>
+            </div>
+            <div class="section-gap"></div>
+        </div>
+        <div class="parallax section-heights" style="background-image: url('/static/readingapp/images/section_image2.jpg');"></div>
+
+        <!-- Checking Modal -->
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Reading Right Classes</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+
+              <div class="modal-body">
+                <form id="form">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="GqLWw3oWlkkYuai7NIYjl9OayUP7PDFAWlBzuu8IWiCSyDjxFdzg9dLEs4Ftf2qf">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <input type="number" name="contact" placeholder="Contact" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Current City</label>
+                        <input type="text" name="current_city" placeholder="Current City" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>City where you want to attend our class</label>
+                        <select id="city_attend" class="form-control" name="city_choice">
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Jodhpur">Jodhpur</option>
+                            <option value="Indore">Indore</option>
+                            <option value="Madurai">Madurai</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current designation</label>
+                        <input type="text" name="current_designation" placeholder="Current Designation" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Institute/organisation for the above designation</label>
+                        <input type="text" name="current_designation_inst_org" placeholder="Institute/Organisation Name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Please mention why do you want to take a course with us (Mention immediate requirement)</label>
+                        <textarea class="form-control" placeholder="Mention Here" name="mention"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select a course you want to take</label>
+                        <select class="form-control" name="course_select" id="course_select" onchange="openBox();">
+                            <option value="Buisness/Economics News">Buisness/Economics News</option>
+                            <option value="General News">General News</option>
+                            <option value="Other Domains">Other Domains</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="other_domain" style="display:none;">
+                        <label>Other Domains</label>
+                        <input type="text" name="course_select" class="form-control" placeholder="Other Domains">
+                    </div>
+
+                    <div id="alert-div" style="display: none;">
+                        <div class="alert alert-success" id="alert-color" role="alert">
+                           <span id="message"></span>
+                        </div>
+                    </div>
+
+                  </div>
+              </form>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-custom" onclick="submitForm();">Register</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <script>
+            function submitForm() {
+                $.ajax({
+                    url: "https://www.readingright.in/class/",
+                    method: 'POST',
+                    data: $("#form").serialize(),
+                    success: function(result){
+                        $('#alert-div').fadeIn();
+                        $('#message').html(result.message+"! We will get in touch with you soon!");
+                        $('#form').find("input[type=text], input[type=email], input[type=number], textarea").val("");
+                    }
+                });
+            }
+            function openBox() {
+                if($('#course_select').val() == "Other Domains") {
+                    $('#course_select').attr({'disabled' : true});
+                    $('#other_domain').fadeIn();
+                }
+            }
+        </script>
+        <!-- Checking Modal End -->
+        
+
+
+         <div class="app-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <p>The Reading Right app is coming soon with a guarantee that you will henceforth read & analyse news like an expert! <span class="person"><strong>"Hate newspapers all you want, 'cause we got this!"</strong></span></p>
+                        <a href="javascript:void(0)" onclick="comingSoon()"><img src="/static/readingapp/images/play_icon.png" class="store-icons"></a>
+                        <a href="javascript:void(0)" onclick="comingSoon()"><img src="/static/readingapp/images/apple_icon.png" class="store-icons"></a>
+                    </div>
+                    <div class="col-lg-4 text-right mobile-hide">
+                        <img src="/static/readingapp/images/app_icon.png" class="app-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!--<div class="col-lg-4 text-center">
+                        <img src="/static/readingapp/images/logo_white.png" height="100px"/>
+                    </div>-->
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-3 text-center">
+                                <a href="javascript:void(0)" class="custom-link" onclick="comingSoon()">Privacy Policy</a>
+                            </div>
+                            <div class="col-lg-3 text-center">
+                                <a href="content-research" class="custom-link">Content Research</a>
+                            </div>
+                            <div class="col-lg-3 text-center">
+                                <a href="articles/signup" class="custom-link">Content Portal</a>
+                            </div>
+                            <div class="col-lg-3 text-center">
+                                <a href="disclaimer" class="custom-link">Disclaimer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container h-100">
+                <div class="row align-items-center h-100">
+                    <div class="mx-auto">
+                        <div class="text-center justify-content-center align-self-center">&#9400; 2020 Reading Right</div>
+                        <!--  | Powered by <a href="https://www.sodiarc.com/" target="_blank">Sodiarc</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loading" style="display:none;">Loading&#8230;</div>
+        <script>
+        function comingSoon() {
+            Swal.fire({
+                title: 'Coming Soon',
+                text: 'Anyone can be cool, but awesome takes practice...at it since 2013!',
+                icon: 'info',
+                confirmButtonColor: '#D97E79'
+            });
+        }
+
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        });
+        //const logoEl = document.getElementById('logo');
+        //const matchDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        /*const setScreenshot = isDark => {
+            (logoEl.src = `/static/readingapp/images/logo${isDark ? '_white' : ''}.png`); //_white
+            if(isDark) {
+                //$('#nav-change').removeClass('navbar-light');
+                //$('#nav-change').addClass('navbar-dark');
+                $('#expert').attr("src","/static/readingapp/images/expert_white.png");
+            } else {
+                //$('#nav-change').removeClass('navbar-dark');
+                //$('#nav-change').addClass('navbar-light');
+            }
+        }*/
+
+        //setScreenshot(matchDark.matches);
+
+        /*matchDark.addListener(e => {
+            setScreenshot(e.matches);
+        });*/
+        </script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+        <!--load more-->
+        <script src="/static/readingapp/js/showMoreItems.min.js"></script>
+
+        <script>
+        $( document ).ready(function() {
+            var options = {
+        		valueNames: ['chat_name']
+        	};
+        	var chats = new List('chatbar',options);
+        });
+        $('body').on('click', function (e) {
+            //did not click a popover toggle or popover
+            if ($(e.target).data('toggle') !== 'popover'
+                && $(e.target).parents('[data-toggle="popover"]').length === 0
+                && $(e.target).parents('.popover.in').length === 0) {
+                $('[data-toggle="popover"]').popover('hide');
+            }
+        });
+        </script>
+
+    </body>
+</html>

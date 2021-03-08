@@ -1,0 +1,240 @@
+user = Account.object.get(email = find_user)
+
+        question = request.POST.get('question')
+        exam_type = request.POST.get('ca')
+        subject_id = request.POST.get('subjects')
+
+        choice_1 = request.POST.get('choice_1')
+        choice_2 = request.POST.get('choice_2')
+        choice_3 = request.POST.get('choice_3')
+        choice_4 = request.POST.get('choice_4')
+        correct_choice = request.POST.get('correct')
+        # print("question",question)
+        # print("subject_id",request.POST.get('subjects'))
+        # print("choice_1",choice_1)
+        # print("choice_2",choice_2)
+        # print("choice_3",choice_3)
+        # print("choice_4",choice_4)
+        # print("correct_choice",correct_choice)
+
+        # adding question
+        get_subject = Subject.objects.get(id=subject_id)
+        question_obj = Question()
+        question_obj.question_text = question
+        question_obj.subject = get_subject
+        question_obj.exam = exam_type
+        question_obj.teacher = user
+        question_obj.save()
+
+        # adding choice Corrosponding with answer
+        if correct_choice == 1:
+            AddChoice(choice_1, question_obj, True)
+            AddChoice(choice_2, question_obj)
+            AddChoice(choice_3, question_obj)
+            AddChoice(choice_4, question_obj)
+
+        elif correct_choice == 2:
+            AddChoice(choice_1, question_obj)
+            AddChoice(choice_2, question_obj, True)
+            AddChoice(choice_3, question_obj)
+            AddChoice(choice_4, question_obj)
+
+        elif correct_choice == 3:
+            AddChoice(choice_1, question_obj)
+            AddChoice(choice_2, question_obj)
+            AddChoice(choice_3, question_obj, True)
+            AddChoice(choice_4, question_obj)
+
+        elif correct_choice == 4:
+            AddChoice(choice_1, question_obj)
+            AddChoice(choice_2, question_obj)
+            AddChoice(choice_3, question_obj)
+            AddChoice(choice_4, question_obj, True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        password = request.POST.get('password')
+        password_confirm = request.POST.get('password_confirm')
+        print('first_name = ',request.POST.get('first_name'))
+        print('last_name = ',request.POST.get('last_name'))
+        print('year = ',request.POST.get('year'))
+        print('semester = ',request.POST.get('semester'))
+        # user.registration_no = request.POST.get('registration_no')
+        # user.university_roll = request.POST.get('university_roll_no')
+        print('department = ',request.POST.get('department'))
+        # user.gender = request.POST.get('gender')
+        print('phone = ',request.POST.get('phone'))
+        # user.address = request.POST.get('address')
+        print('image = ',request.FILES.get("image"))
+        print('password ',password)
+        print('Confirm password ', password_confirm)
+
+        print('HOD', request.POST.get('hod'))
+        print('BC', request.POST.get('boc'))
+        print('Teacher', request.POST.get('teacher'))
+
+
+        <!--<script >-->
+<!--    $(document).ready(function(){-->
+<!--    $("#semester").on('change',function(){-->
+<!--    var semester = $(this).val();-->
+<!--    $.ajax({-->
+<!--    method:'POST',-->
+<!--    url:"{%url 'college:'%}",-->
+<!--    data:{id:semester},-->
+<!--    dataType:"html",-->
+<!--    success:function(data){-->
+<!--    $("#subject").html(data);-->
+<!--    }-->
+<!--</script>-->
+
+
+
+
+     $.ajax({
+        url: url,
+        data: {
+          'semester': semesterID
+        },
+        success: function (data) {
+          $("#id_branch").html(data);
+        }
+      });
+
+
+
+      class AccountManager(BaseUserManager):
+    def create_user(self, email, password=None):
+        if not email:
+            raise ValueError("A Email Required")
+        # if not username:
+        #     raise ValueError("Usename Required")
+        user = self.model(
+            email=self.normalize_email(email),
+            # username=username,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password):
+        user = self.create_user(
+            email=self.normalize_email(email),
+            password=password
+        )
+
+        user.is_admin = True
+        user.is_active = True
+        user.is_superuser = True
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
+
+
+class Account(AbstractBaseUser):
+    def path_and_rename(instance, filename):
+        upload_to = 'profile/'
+        ext = filename.split('.')[-1]
+        # get filename
+        if instance.pk:
+            filename = '{}.{}'.format(instance.pk, ext)
+        else:
+            # set filename as random string
+            filename = '{}.{}'.format(uuid4().hex, ext)
+        # return the whole path to the file
+        return os.path.join(upload_to, filename)
+
+    dept_choice = [
+        ('Computer Science and Engineering', 'Computer Science and Engineering'),
+        ('Electronics  and Telecommunication Engineering', 'Electronics  and Telecommunication Engineering'),
+        ('Electrical Engineering', 'Electrical Engineering'),
+        ('Civil Engineering', 'Civil Engineering'),
+
+    ]
+
+    gender_choice = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+
+    ]
+    # student fields
+    registration_no = models.CharField(max_length=20)
+    year = models.CharField(max_length=4)
+    semester = models.IntegerField(default=1)
+    university_roll = models.CharField(max_length=20)
+    gender = models.CharField(max_length=10)
+
+    # common field for staff and student
+    email = models.EmailField(max_length=100, verbose_name="email", unique=True)
+    first_name = models.CharField(max_length=100, )
+    last_name = models.CharField(max_length=100, )
+    username = models.CharField(max_length=100, verbose_name='username')
+    address = models.CharField(max_length=255)
+    gender = models.CharField(max_length=10, choices=gender_choice, default='Male', blank=True)
+    phone = models.CharField(max_length=10, verbose_name='phone')
+    image = models.ImageField(upload_to=path_and_rename, max_length=255, null=True, blank=True)
+    department = models.CharField(max_length=255, choices=dept_choice, default='Computer Science and Engineering')
+    recovery_email = models.EmailField(max_length=255, default="admin@pcmt-india.net")
+
+    last_login = models.DateTimeField(auto_now=True)
+    joined_date = models.DateTimeField(auto_now_add=True)
+
+    # user privileges
+    is_student = models.BooleanField(default=False)
+    is_HOD = models.BooleanField(default=False)
+    is_BOC = models.BooleanField(default=False)
+    is_teacher = models.BooleanField(default=False)
+
+    is_staff = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
+    USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['username']
+
+    object = AccountManager()
+
+    def __str__(self):
+        return self.email
+
+    def has_perm(self, perm, objec=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return True

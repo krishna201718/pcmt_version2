@@ -1,0 +1,96 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block sidebar %}
+{%include 'side.html' %}
+{%endblock %}
+
+{%block content%}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<div class="container">
+    <!-- Breadcrumb -->
+    <div class="d-flex align-items-center pb-3">
+        <div>
+            <!-- Title -->
+            <h2>Student Mark</h2>
+            <!-- End Title -->
+            <!--breadcrum start-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb pmd-breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Student mark</li>
+                </ol>
+            </nav>
+            <!--breadcrum end-->
+        </div>
+
+
+    </div>
+    <!-- /Breadcrumb -->
+
+<!--start mark add-->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-left"><strong class="mdlabel">Result</strong></h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-3"><span class="mdlabel">University Roll No.</span></div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input type="number" data-role='number' id="sr" data-name='sr' class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3"><span class="mdlabel">Name</span></div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input type="text" id="name" data-name='name' class="form-control">
+                            </div>
+                        </div>
+
+<!-- subject-->
+                        <div class="col-sm-3"><span class="mdlabel">Maths</span></div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input type="text" id="math" value="100 Out Of" data-name='math' class="form-control"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-3"><span class="mdlabel">Marks</span></div>
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                <input type="number" id="mark" data-name='mark'  class="form-control" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-sm-12  ">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                        <div class="col-md-4 ">
+                             <button type="button" class="btn btn-secondary  btn-block " id="btn-new" data-dismiss="modal">
+                            Submit
+                        </button>
+                        </div>
+                        <div class="col-md-4 ">
+
+                        </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <img src="{%static 'college/images/svg/mark.svg'%}" class="img-fluid mx-auto d-block" alt="Responsive image">
+</div>
+
+{%endblock%}
+

@@ -1,0 +1,1334 @@
+{%extends "base.html" %}
+{%load static%}
+
+{%block content%}
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+
+<div class="container mt-5 mb-5 p-3 card border">
+    <center>
+
+        <fieldset>
+
+            <!-- Form Name -->
+
+            <div class="row">
+                <div class="col-md-4"><h1 class="mt-2 mb-5"><b>Application Form No.</b></h1>
+
+                </div>
+                <div class="col-md-4"><h1 class="mt-2 mb-5"><b><strong
+                        class="text-danger">{{request.user.enrollment_no}}</strong>
+                </b>
+                </h1></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-1"><a href="{%url 'college:logout' %}" class="btn btn-warning mt-4 ">Logout</a>
+                </div>
+            </div>
+
+
+            <br>
+
+
+            <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
+                <li class="nav-item mr-1 " role="presentation">
+                    <button class="nav-link active btn-secondary" id="pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#personal_information" type="button" role="tab" aria-controls="pills-home"
+                            aria-selected="true">Personal Information<strong
+                            class="text-danger">*</strong>
+                    </button>
+                </li>
+
+                <li class="nav-item mr-1 " role="presentation">
+                    <button class="nav-link btn-secondary" id="pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#entrance" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">Details of Entrance
+                        Examination<strong class="text-danger">*</strong>
+
+                    </button>
+                </li>
+
+                <li class="nav-item mr-1 " role="presentation">
+                    <button class="nav-link btn-secondary" id="pills-contact-tab" data-bs-toggle="pill"
+                            data-bs-target="#tenth" type="button" role="tab" aria-controls="pills-contact"
+                            aria-selected="false">Education Information
+                        10<sup>th</sup> <strong
+                                class="text-danger">*</strong>
+                    </button>
+                </li>
+
+                <li class="nav-item mr-1 " role="presentation">
+                    <button class="nav-link btn-secondary" id="pills-contact-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-12ordiplom" type="button" role="tab"
+                            aria-controls="pills-contact"
+                            aria-selected="false"> 12<sup>th</sup> or Diploma
+                        <strong
+                                class="text-danger">*</strong>
+
+                    </button>
+                </li>
+
+                <li class="nav-item  mr-1 " role="presentation">
+                    <button class="nav-link btn-secondary" id="pills-others" data-bs-toggle="pill"
+                            data-bs-target="#others" type="button" role="tab" aria-controls="pills-contact"
+                            aria-selected="false"> others<sup>th</sup> <strong
+                            class="text-danger">*</strong>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="personal_information" role="tabpanel"
+                     aria-labelledby="pills-home-tab">
+                    <!-- Educational information,diploma school name, locality,medium,board -->
+                    <h4 class="text-start mb-3 mt-3">Personal Informations<strong
+                            class="text-danger"><sup>*</sup> </strong>
+                    </h4>
+                    <!-- email and mobile no.        -->
+                    <form class="well form-horizontal" method="post" id="contact_form"
+                          enctype="multipart/form-data">
+                        {%csrf_token%}
+                        <div class="card border-dark p-3">
+                            <div class="row g-2 mb-2">
+                                <!--email-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" placeholder="last Name"
+                                               name="email"  value="{{request.user.email}}" required readonly>
+                                        <label for="floatingInputGrid">Email id<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--   contacat no-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="last Name"
+                                               name="contact_no" required>
+                                        <label for="floatingInputGrid">Mobile No.<strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- first,last,don, gender-->
+                            <div class="row g-2 mb-2 ">
+                                <!--first_name-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="First Name"
+                                               name="first_name" required>
+                                        <label for="floatingInputGrid">First Name<strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--last_name-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="last Name"
+                                               name="last_name" required>
+                                        <label for="floatingInputGrid">Last Name<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--date_of_birth-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" placeholder="last Name"
+                                               name="dob" required>
+                                        <label for="floatingInputGrid">Date of Birth<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--gender -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="gender" required>
+                                            <option>select</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Gender<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end dept selection          -->
+
+                            <!-- Start Present and permanent Address, contact no -->
+                            <div class="row g-2 mb-2">
+                                <!-- Address-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                               placeholder="Registration no"
+                                               name="address" required>
+                                        <label for="floatingInputGrid">Address<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--city -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                               placeholder="permanent_address" name="city" required>
+                                        <label for="floatingInputGrid">City<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--state -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="contact_no"
+                                               name="state" required>
+                                        <label for="floatingInputGrid">State<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--country -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="Email"
+                                               name="country" required>
+                                        <label for="floatingInputGrid">country<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Present and permanent Address, contact no -->
+
+                            <!--fathers name and mothers_name, blood, tounge -->
+                            <div class="row g-2 mb-2">
+                                <!--fathers_name -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="fathers_name" required>
+                                        <label for="floatingInputGrid">Father's Name<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--mothers_name -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="mothers_name" required>
+                                        <label for="floatingInputGrid">Mother's Name<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--Blood Group -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="blood_group" required>
+                                            <option>Select</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Your Blodd Group<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--mothers Tongue -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="mothers_tongue" required>
+                                        <label for="floatingInputGrid">Mother Tongue<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row g-2 mb-2">
+<!--Fathers Contact No-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="fathers_contact_no" required>
+                                        <label for="floatingInputGrid">Fathers Contact No<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+<!--guardian_name -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="guardian_name" required>
+                                        <label for="floatingInputGrid">Guardian's Name<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+<!--mothers_name -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="guardian_contact_no" required>
+                                        <label for="floatingInputGrid">Guardian Contact No<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+<!--mothers_name -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Fathers Name"
+                                               name="relation_with_guardian" required>
+                                        <label for="floatingInputGrid">Relation With Guardian<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <!-- Nationality name, Religion ,and cast-->
+                            <div class="row g-2 mb-2">
+                                <!--Nationality Name,   -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                               placeholder="Guardian Name"
+                                               name="nationality" required>
+                                        <label for="floatingInputGrid">Nationality Name<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                                <!--Religion-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="religion" required>
+                                            <option value="Hinduism ">Hinduism</option>
+                                            <option value="Islam ">Islam</option>
+                                            <option value="Christianity ">Christianity</option>
+                                            <option value="Buddhism ">Buddhism</option>
+                                            <option value="Jainism ">Jainism</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Religion<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--Cast-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="cast">
+                                            <option value="General">General</option>
+                                            <option value="OBC">OBC</option>
+                                            <option value="OBC-b">OBC-b</option>
+                                            <option value="ST">ST</option>
+                                            <option value="SC">SC</option>
+                                            <option value="PWD">PWD</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Cast<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                                <!--Physically Challenge-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="physically_challenge">
+                                            <option value="yes">Yes</option>
+
+                                            <option value="no">No</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Physically Challenge<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2">
+                                <!--department -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="department">
+
+                                            <option value="Computer Science and Engineering">Computer Science and
+                                                Engineering
+                                            </option>
+                                            <option value="Electronics and Telecommunication">Electronics and
+                                                Telecommunication
+                                            </option>
+                                            <option value="Electrical Engineering"> Electrical Engineering</option>
+                                            <option value="Civil Engineering"> Civil Engineering</option>
+                                            <option value="Management Staff"> Management Staff</option>
+                                        </select>
+                                        <label for="floatingSelectGrid" class="p-2 text-dark"><strong>Course applied
+                                            for</strong> <strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                               placeholder="Guardian Name"
+                                               name="aadhar_card_no" required>
+                                        <label for="floatingInputGrid">Aadhar Card no.<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--department, physically ,cast photo image-->
+
+                            <div class="row g-2">
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" placeholder="Aadhar No."
+                                               name="aadhar_card" required>
+                                        <label for="floatingInputGrid" class="p-2 text-dark "> <strong>Aadhar
+                                            Card </strong> <strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" placeholder="Aadhar No."
+                                               name="physically_certificate" >
+                                        <label for="floatingInputGrid" class="p-2 text-dark "> <strong>If Physically
+                                            Challenged</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" placeholder="Aadhar No."
+                                               name="cast_certificate" >
+                                        <label for="floatingInputGrid" class="p-2 text-dark "><strong>If Cast
+                                            Certificate</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" placeholder="Aadhar No."
+                                               name="photo" required>
+                                        <label for="floatingInputGrid" class="p-2 text-dark "><strong>Photo passport
+                                            size</strong><strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Success message -->
+                        {%if msg%}
+                        <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                        </div>
+                        {%endif%}
+                        <!-- Button -->
+                        <div class="form-group mb-5">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSave
+                                    <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Educational information,diploma school name, locality,medium,board -->
+                <div class="tab-pane fade" id="entrance" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                    <h4 class="text-start mb-3 mt-3">Details of Entrance Examination <strong
+                            class="text-danger">*</strong>
+                    </h4>
+                    <!-- Admission category, Entrance type, rank, and admit.-->
+                    <!-- email and mobile no.        -->
+                    <form class="well form-horizontal" method="post" id="contact_form"
+                          enctype="multipart/form-data">
+                        {%csrf_token%}
+
+                        <div class="card p-3 border-dark">
+                            <!-- name , conducted by , rank, roll-->
+                            <div class="row g-2 mb-2">
+                                <!--Admission category -->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                               placeholder="Admission category" name="admission_cat" required>
+                                        <label for="floatingInputGrid">Name of Examination<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                                <!-- Entrance type-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                               placeholder="Entrance type"
+                                               name="conducted_by" required>
+                                        <label for="floatingInputGrid">Conducted By<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--rank-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="Rank"
+                                               name="rank" required>
+                                        <label for="floatingInputGrid">Rank or Percentage<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--roll No.-->
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" placeholder="Aadhar No."
+                                               name="roll_no" required>
+                                        <label for="floatingInputGrid">Enrollment/Roll/Registration No.<strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!--letter, admit, rank-->
+                            <div class="row mt-2 g-2">
+                                <!--  allotment letter-->
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <select class="form-select" id=""
+                                                aria-label="Floating label select example"
+                                                name="allotment" required>
+                                            <option selected>select</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+
+
+                                        </select>
+                                        <label for="floatingSelectGrid" class="text-dark">Do You have any allotment No.
+                                            <strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--  admit_card-->
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" placeholder="Aadhar No."
+                                               name="admit_card" required>
+                                        <label for="floatingInputGrid" class="p-2 text-dark "><strong>Admit
+                                            Card</strong><strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                                <!--  rank_card-->
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" placeholder="Aadhar No."
+                                               name="rand_card" required>
+                                        <label for="floatingInputGrid" class="p-2 text-dark "><strong>Rank Card</strong><strong
+                                                class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Success message -->
+                        {%if msg%}
+                        <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                        </div>
+                        {%endif%}
+                        <!-- Button -->
+                        <div class="form-group mb-5">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSave
+                                    <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="tab-pane fade" id="tenth" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <!-- 10th -->                        <!-- email and mobile no.        -->
+                    <form class="well form-horizontal" method="post" id="contact_form"
+                          enctype="multipart/form-data">
+                        {%csrf_token%}
+
+
+                        <div>
+                            <!-- Educational information,diploma school name, locality,medium,board -->
+                            <h4 class="text-start mb-3 mt-3">Education Information 10<sup>th</sup> <strong
+                                    class="text-danger">*</strong>
+                            </h4>
+                            <div class="card mb-3 p-3  border-dark">
+                                <div class="row g-2 mb-2 ">
+
+                                    <!-- Educational information,10th school name, locality,medium,board -->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--10th school name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="school_name_10" required>
+                                                <label for="floatingInputGrid">Name of School/College <strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="board_10" required>
+                                                <label for="floatingInputGrid">Boar/University<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="medium_10" required>
+                                                <label for="floatingInputGrid">Medium<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--10th address,city,state,country-->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--10th locality name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="address10" required>
+                                                <label for="floatingInputGrid">Address<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--10th school name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="city10" required>
+                                                <label for="floatingInputGrid">City<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--state (12th) -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="state10" required>
+                                                <label for="floatingInputGrid">State<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+                                        <!--country -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="country10" required>
+                                                <label for="floatingInputGrid">Country<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th year -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="passing_year_10" required>
+                                                <label for="floatingInputGrid">Passing Year(12th)<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- marks -->
+                                    <h4 class="text-start mb-3 mt-3">Marks Details <strong
+                                            class="text-danger">*</strong>
+                                    </h4>
+                                    <!-- sub 1,2,3,4,5-->
+                                    <div class="row g-2 mb-2 ">
+
+
+                                        <!--10th english -->
+                                        <div class="col-md">
+                                            <div class="form-floating ">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="sub1" required>
+                                                <label for="floatingInputGrid">Subject 1<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+                                        <!--10th physics -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="sub2" required>
+                                                <label for="floatingInputGrid">Subject 2<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--10th chemistry -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="sub3" required>
+                                                <label for="floatingInputGrid">Subject 3<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--10th math -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="sub4" required>
+                                                <label for="floatingInputGrid">Subject 4<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--10th optional -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="sub5" required>
+                                                <label for="floatingInputGrid">Subject 5<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--10th Aggregate -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="aggregate10" required>
+                                                <label for="floatingInputGrid">Aggregate <strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 10th    mark,admit,certificate -->
+                                    <div class="row g-2">
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="mark10" required>
+                                                <label for="floatingInputGrid"
+                                                       class="p-2 text-dark "><strong>10<sup>th</sup> Mark
+                                                    sheet</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="admit10" required>
+                                                <label for="floatingInputGrid"
+                                                       class="p-2 text-dark "><strong>10<sup>th</sup> Admit
+                                                    card</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="certificate10" required>
+                                                <label for="floatingInputGrid"
+                                                       class="p-2 text-dark "><strong>10<sup>th</sup> Pass
+                                                    Certificate</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- Success message -->
+                        {%if msg%}
+                        <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                        </div>
+                        {%endif%}
+                        <!-- Button -->
+                        <div class="form-group mb-5">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSave
+                                    <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <!-- 12th or diploma or both-->
+                <div class="tab-pane fade" id="pills-12ordiplom" role="tabpanel"
+                     aria-labelledby="pills-contact-tab">
+
+                    <h4 class="text-start mb-3 mt-3"><strong>12<sup>th</sup> / Diploma Select</strong> <strong
+                            class="text-danger">*</strong>
+                    </h4>
+                    <!-- email and mobile no.        -->
+                    <form class="well form-horizontal" method="post" id="contact_form"
+                          enctype="multipart/form-data">
+                        {%csrf_token%}
+                        <div class="card border-dark p-3 ">
+                            <div class="row g-2 ">
+                                <!--Admission cateory-->
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="exam_type"
+                                                aria-label="Floating label select example"
+                                                name="diploma_or_12" required>
+                                            <option selected>select</option>
+                                            <option value="12th">12th</option>
+                                            <option value="diploma">Diploma</option>
+
+
+                                        </select>
+                                        <label for="floatingSelectGrid" class="text-dark"> <strong>12 <sup>th</sup> mark
+                                            or
+                                            Diploma</strong><strong class="text-danger">*</strong></label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="twelve">
+                            <!-- Educational information,diploma school name, locality,medium,board -->
+                            <h4 class="text-start mb-3 mt-3">Education Information 12<sup>th</sup> <strong
+                                    class="text-danger">*</strong>
+                            </h4>
+                            <div class="card mb-3 p-3  border-dark">
+                                <div class="row g-2 mb-2 ">
+
+                                    <!-- Educational information,12th school name, locality,medium,board -->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--12th school name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="school_name_12" required>
+                                                <label for="floatingInputGrid">Name of School/College <strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="board_12" required>
+                                                <label for="floatingInputGrid">Boar/University<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="medium_12" required>
+                                                <label for="floatingInputGrid">Medium<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--12th total, marks,percentage,year-->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--12th locality name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="address12" required>
+                                                <label for="floatingInputGrid">Address<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th school name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="city12" required>
+                                                <label for="floatingInputGrid">City<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--state (12th) -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="state12" required>
+                                                <label for="floatingInputGrid">State<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+                                        <!--country -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="country12" required>
+                                                <label for="floatingInputGrid">Country<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th year -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="passing_year_12" required>
+                                                <label for="floatingInputGrid">Passing Year(12th)<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- marks -->
+                                    <h4 class="text-start mb-3 mt-3">Marks Details <strong
+                                            class="text-danger">*</strong>
+                                    </h4>
+                                    <!--  12th subject-->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--12th english -->
+                                        <div class="col-md">
+                                            <div class="form-floating ">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="english" required>
+                                                <label for="floatingInputGrid">English<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+                                        <!--12th physics -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="physics" required>
+                                                <label for="floatingInputGrid">Physics<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th chemistry -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="chemistry" required>
+                                                <label for="floatingInputGrid">Chemistry<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th math -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="math" required>
+                                                <label for="floatingInputGrid">Mathmatics<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th optional -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="optional" required>
+                                                <label for="floatingInputGrid">Optional<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th Aggregate -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="aggregate12" required>
+                                                <label for="floatingInputGrid">Aggregate <strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  admit,mark,certificate-->
+                                    <div class="row g-2">
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="mark12" required>
+                                                <label for="floatingInputGrid"
+                                                       class="p-2 text-dark "><strong>12<sup>th</sup>
+                                                    Mark
+                                                    sheet</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="admit12" required>
+                                                <label for="floatingInputGrid"
+                                                       class="p-2 text-dark "><strong>12<sup>th</sup>
+                                                    Admit
+                                                    card</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="certificate12" required>
+                                                <label for="floatingInputGrid"
+                                                       class="p-2 text-dark "><strong>12<sup>th</sup>
+                                                    Pass
+                                                    Certificate</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+<!-- Success message -->
+                        {%if msg%}
+                        <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                        </div>
+                        {%endif%}
+                        <!-- Button -->
+                        <div class="form-group mb-5">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSave
+                                    <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </button>
+                            </div>
+                        </div>
+
+
+                        </div>
+                        </form>
+<!--  diploma form-->
+                        <form class="well form-horizontal" method="post" id="contact_form1"
+                                                  enctype="multipart/form-data">
+                                                {%csrf_token%}
+                            <input type="hidden" name="diploma_or_12" value="diploma">
+                        <div id="diploma">
+                            <!-- Educational information,diploma school name, locality,medium,board -->
+                            <h4 class="text-start mb-3 mt-3">Diploma Information <strong class="text-danger">*</strong>
+                            </h4>
+                            <div class="card mb-3 p-3 border-dark">
+                                <div class="row g-2 mb-2 ">
+
+                                    <!-- Educational information,12th school name, locality,medium,board -->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--12th school name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="school_name_diploma" required>
+                                                <label for="floatingInputGrid">Name of School/College <strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="board_diploma" required>
+                                                <label for="floatingInputGrid">Boar/University<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="medium_diploma" required>
+                                                <label for="floatingInputGrid">Medium<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--diploma total, marks,percentage,year-->
+                                    <div class="row g-2 mb-2 ">
+                                        <!--12th locality name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="addressDiploma" required>
+                                                <label for="floatingInputGrid">Address<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--diploma school name -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="cityDiploma" required>
+                                                <label for="floatingInputGrid">City<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--Diploma state  -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="stateDiploma" required>
+                                                <label for="floatingInputGrid">State<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+                                        <!--Diploma -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="countryDiploma" required>
+                                                <label for="floatingInputGrid">Country<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--12th year -->
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="passing_year_Diploma" required>
+                                                <label for="floatingInputGrid">Passing Year<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- marks-->
+                                    <h4 class="text-start mb-3 mt-3">Marks Details <strong
+                                            class="text-danger">*</strong>
+                                    </h4>
+                                    <div class="row g-2 mb-2 ">
+
+                                        <!--Diploma marks -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="marksDiploma" required>
+                                                <label for="floatingInputGrid">Marks<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!-- Diploma aggregate-->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="aggregateDiploma" required>
+                                                <label for="floatingInputGrid">Aggregate<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <!--Diploma division -->
+                                        <div class="col-md ">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="division" required>
+                                                <label for="floatingInputGrid">Class/Division<strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="markDiploma" required>
+                                                <label for="floatingInputGrid" class="p-2 text-dark "><strong>Diploma
+                                                    Mark
+                                                    sheet</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="file" class="form-control"
+                                                       placeholder="Aadhar No."
+                                                       name="certificateDiploma" >
+                                                <label for="floatingInputGrid" class="p-2 text-dark "><strong>Diploma
+                                                    Pass
+                                                    Certificate</strong><strong class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Success message -->
+                            {%if msg%}
+                            <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                    class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                            </div>
+                            {%endif%}
+                            <!-- Button -->
+                            <div class="form-group mb-5">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4"><br>
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <button type="submit" class="btn btn-warning">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSave
+                                        <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            </div>
+                        </form>
+
+                </div>
+<!--others-->
+                <div class="tab-pane fade" id="others" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+                    <h4 class="text-start mb-3 mt-3">Additional infromations<strong class="text-danger">*</strong>
+                    </h4>
+                    <!-- email and mobile no.        -->
+                    <form class="well form-horizontal" method="post" id="contact_form"
+                          enctype="multipart/form-data">
+                        {%csrf_token%}
+
+
+                        <div class="card border-dark p-3">
+                            <div class="row g-2 mb-2 ">
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="loan" required>
+                                            <option>Select</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+
+                                        </select>
+                                        <label for="floatingSelectGrid">Are you planning to take educational
+                                            loan</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="hostel">
+                                            <option>Select</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+
+                                        </select>
+                                        <label for="floatingSelectGrid">Do you want to avail hostel</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid"
+                                                aria-label="Floating label select example" name="gap" required>
+                                            <option>Select</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+
+                                        </select>
+                                        <label for="floatingSelectGrid">Do you any year gap-</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"
+                                                       placeholder="First Name" name="reason">
+                                                <label for="floatingInputGrid">Valid Reason for Year Gap <strong
+                                                        class="text-danger">*</strong></label>
+                                            </div>
+                                        </div>
+
+                            </div>
+                        </div>
+                        <!-- Success message -->
+                        {%if msg%}
+                        <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                        </div>
+                        {%endif%}
+                        <!-- Button -->
+                        <div class="form-group mb-5">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSave
+                                    <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+        </fieldset>
+        </form>
+    </center>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+    var x = document.getElementById("twelve");
+    var y = document.getElementById("diploma");
+    x.style.display = "none";
+    y.style.display = "none";
+});
+
+
+$("#exam_type").change(function(){
+    var check = $(this).val();
+    var x = document.getElementById("twelve");
+    var y = document.getElementById("diploma");
+      if (check =='12th') {
+        x.style.display = "block";
+        y.style.display = "none";
+      }
+      else if (check =='diploma') {
+        x.style.display = "none";
+        y.style.display = "block";
+      }
+      else if (check =='both') {
+       x.style.display = "block";
+       y.style.display = "block";
+      }
+      else {
+        x.style.display = "none";
+        y.style.display = "none";
+      }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+        crossorigin="anonymous"></script>
+
+
+{%endblock%}

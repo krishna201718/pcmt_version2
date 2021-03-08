@@ -1,0 +1,175 @@
+{%load static%}
+<html class="login-html" lang="">
+<head>
+    {%include 'student/header.html'%}
+</head>
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+</style>
+</head>
+
+<body class="body-custom mb-0">
+
+<div class="user-onboarding">
+    <div class="container">
+        <div class="login-container row d-flex justify-content-between">
+            <div class="col-sm-6 align-self-md-center login-content">
+                <h1 class="newlogin-logo">Nalanda <span>University</span></h1>
+                <hr>
+                <h3 class="pmd-display5 text-white"> student login</h3>
+                <p class="lead">We provide best education in world</p>
+            </div>
+
+            <div class="col-sm-6 align-self-md-center">
+
+                <div class="new-logincard card pmd-card">
+
+                    <div class="login-card">
+                        <div class="card-header">
+
+                            <h2 class="card-title">Welcome to <span>Login </span></h2>
+                            <p class="card-subtitle"></p>
+                        </div>
+                        <!--signin form start -->
+                        <form method="post">
+                            {%csrf_token%}
+                            <input type="hidden" name="function" value="login">
+                            <div class="card-body">
+                                {%for field in form%}
+
+                                <div class="input-group pmd-input-group pmd-input-group-icon mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="material-icons md-dark pmd-sm">perm_identity</i>
+                                        </div>
+                                    </div>
+
+                                    <div class="pmd-textfield pmd-textfield-floating-label">
+                                        {{field.label_tag}}
+                                        {{field}}
+                                        <span class="pmd-textfield-focused"></span>
+
+                                    </div>
+
+
+                                </div>
+                                    {%if field.errors%}
+                                        {%for error in field.errors%}
+
+                                            <h3 class="pmd-display5  text-danger text-left">{{error}}</h3>
+                                        {%endfor%}
+                                    {%endif%}
+                                {%endfor%}
+                            </div>
+
+
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="form-group clearfix">
+                            <div class="float-left">
+                                <div class="custom-control custom-checkbox pmd-checkbox">
+                                    <input class="custom-control-input" type="checkbox" value=""
+                                           id="inverse_defaultCheck1" checked="">
+                                    <label class="custom-control-label" for="inverse_defaultCheck1">
+                                        Remember Me
+
+                                    </label>
+                                </div>
+
+
+                            </div>
+                            <span class="float-right">
+											<a href="{%url 'college:userForgotPassword'%}"
+                                               class="forgot-password text-primary">Forgot password?</a>
+										</span>
+
+                        </div>
+                        <button type="submit"
+                                class="btn pmd-ripple-effect btn-primary btn-block btn-lg pmd-btn-raised m-0">Login
+                        </button>
+                        <p class="mt-3 mb-0 mb-0">Don't have an account? <a href="{%url 'college:userRegistration'%}"
+                                                                            class="login-register text-primary">Sign
+                            Up</a>. </p>
+                    </div>
+                    </form>
+                    <!--signin form	end-->
+                </div>
+                {%include "student/messages.html"%}
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="position-relative">
+        <footer class="pmd-footer login-footer text-white">
+            © <span class="auto-update-year">2020</span> A <a href="#" target="_blank" class="text-white"><strong>Nalanda
+            University </strong></a>
+
+        </footer>
+    </div>
+</div>
+</div>
+<!-- build:include snippets/js-files-404.html -->
+<!-- /build -->
+
+<!-- build:remove -->
+<!--Admin js-->
+<script type="text/javascript" src="{%static 'student/js/bootstrap4-admin-compress.min.js'%}"></script>
+<!-- /build -->
+
+<script>
+	$(document).ready(function() {
+		var sPath=window.location.pathname;
+		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+		$(".pmd-sidebar-nav").each(function(){
+			$(this).find("a[href='"+sPage+"']").parents(".collapse").addClass("show");
+			$(this).find("a[href='"+sPage+"']").parents(".collapse").prev('a.nav-link').addClass("active");
+			$(this).find("a[href='"+sPage+"']").addClass("active");
+		});
+
+		$(".auto-update-year").html(new Date().getFullYear());
+	});
+
+</script>
+<!-- login page sections show hide -->
+<script type="text/javascript">
+	$(document).ready(function(){
+	 $('.app-list-icon li a').addClass("active");
+		$(".login-for").click(function(){
+			$('.login-card').hide()
+			$('.forgot-password-card').show();
+		});
+		$(".signin").click(function(){
+			$('.login-card').show()
+			$('.forgot-password-card').hide();
+		});
+	});
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+		$(".login-register").click(function(){
+			$('.login-card').hide()
+			$('.forgot-password-card').hide();
+			$('.register-card').show();
+		});
+
+		$(".register-login").click(function(){
+			$('.register-card').hide()
+			$('.forgot-password-card').hide();
+			$('.login-card').show();
+		});
+		$(".forgot-password").click(function(){
+			$('.login-card').hide()
+			$('.register-card').hide()
+			$('.forgot-password-card').show();
+		});
+});
+
+</script>
+<!-- Scripts Ends -->
+
+
+</body>
+</html>

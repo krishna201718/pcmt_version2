@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i|Roboto');
+body{
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto';
+}
+.row{
+	margin-top:50px;
+}
+#bill{
+	background: #ddd;
+}
+th,td,tr{
+  color:#F79F1F;
+  border:1px solid #6F1E51;
+  font-size:18px;
+}
+table,tbody,thead{
+  border:2px solid #1289A7;
+}
+p::first-letter {
+ font-size: 100px
+}
+p{
+font-size:50px;
+}
+h4{
+color:#5758BB;
+font-weight:bold;
+font-size:18px;
+}

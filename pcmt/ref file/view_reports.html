@@ -1,0 +1,292 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block sidebar %}
+{%include 'side.html' %}
+{%endblock %}
+
+{%block content%}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'college/css/custome.css' %}">
+
+
+    <style>
+    body{
+    background-color: #f6f6f6 !important;
+    }
+        .bg-white {
+            background-color: #fff !important;
+        }
+
+
+    </style>
+</head>
+
+
+<div class="col-md-12  mt-3">
+    <div><h1 class="text-left font-weight-bolder mb-3 text-dark"><strong>Report</strong></h1></div>
+    <!--        bread crumb-->
+    <div class="shadow-sm p-3 mb-5 bg-white rounded">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-ca1-tab" data-toggle="pill" href="#pills-ca1" role="tab"
+                   aria-controls="pills-ca1" aria-selected="true">Semester 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-ca2-tab" data-toggle="pill" href="#pills-ca2" role="tab"
+                   aria-controls="pills-ca2" aria-selected="false">Continuous Assessment 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-ca3-tab" data-toggle="pill" href="#pills-ca3" role="tab"
+                   aria-controls="pills-ca3" aria-selected="false">Continuous Assessment 3</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" id="pills-ca4-tab" data-toggle="pill" href="#pills-ca4" role="tab"
+                   aria-controls="pills-ca4" aria-selected="false">Continuous Assessment 4</a>
+            </li>
+
+        </ul>
+
+
+        <div class="tab-content " id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-ca1" role="tabpanel" aria-labelledby="pills-ca1-tab">
+
+                <div class="card">
+
+                    <div class="shadow-sm   rounded  col-md-12 ">
+                        <div class="row  pt-3 bg-white">
+                            <div class="col-md-1">
+                                <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle"
+                                     alt="...">
+                            </div>
+                            <div class="col-md-8 ">
+                                <p class="font-weight-bolder"><strong> Computer Network </strong></p>
+                                <p>Computer Sciencea and Engineering</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row ">
+                                    <div class=" col-md-12 text-primary "><p class="text-center"></p>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12 text-danger text-center"><p class="text-center"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row  mt-1">
+                            <div class="col-md-12">
+
+                                <div class="row  border">
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Question </strong> <br> 22</p></div>
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Marks </strong> <br> 100 </p></div>
+                                    <div class="col-md-5 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Obtain </strong><br> 70 </p></div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-auto">
+                            <button type="button" class="btn btn-secondary btn-circle ">Download Report</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="pills-ca2" role="tabpanel" aria-labelledby="pills-ca2-tab">
+
+                <div class="card">
+
+                    <div class="shadow-sm   rounded  col-md-12 ">
+                        <div class="row  pt-3 bg-white">
+                            <div class="col-md-1">
+                                <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle"
+                                     alt="...">
+                            </div>
+                            <div class="col-md-8 ">
+                                <p class="font-weight-bolder"><strong> Computer Network </strong></p>
+                                <p>Computer Sciencea and Engineering</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row ">
+                                    <div class=" col-md-12 text-primary "><p class="text-center"></p>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12 text-danger text-center"><p class="text-center"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row  mt-1">
+                            <div class="col-md-12">
+
+                                <div class="row  border">
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Question </strong> <br> 22</p></div>
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Marks </strong> <br> 100 </p></div>
+                                    <div class="col-md-5 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Obtain </strong><br> 70 </p></div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-auto">
+                            <button type="button" class="btn btn-secondary btn-circle ">Download Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-ca3" role="tabpanel" aria-labelledby="pills-ca3-tab">
+
+               <div class="card">
+
+                    <div class="shadow-sm   rounded  col-md-12 ">
+                        <div class="row  pt-3 bg-white">
+                            <div class="col-md-1">
+                                <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle"
+                                     alt="...">
+                            </div>
+                            <div class="col-md-8 ">
+                                <p class="font-weight-bolder"><strong> Computer Network </strong></p>
+                                <p>Computer Sciencea and Engineering</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row ">
+                                    <div class=" col-md-12 text-primary "><p class="text-center"></p>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12 text-danger text-center"><p class="text-center"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row  mt-1">
+                            <div class="col-md-12">
+
+                                <div class="row  border">
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Question </strong> <br> 22</p></div>
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Marks </strong> <br> 100 </p></div>
+                                    <div class="col-md-5 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Obtain </strong><br> 70 </p></div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-auto">
+                            <button type="button" class="btn btn-secondary btn-circle ">Download Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-ca4" role="tabpanel" aria-labelledby="pills-ca4-tab">
+
+                <div class="card">
+
+                    <div class="shadow-sm   rounded  col-md-12 ">
+                        <div class="row  pt-3 bg-white">
+                            <div class="col-md-1">
+                                <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle"
+                                     alt="...">
+                            </div>
+                            <div class="col-md-8 ">
+                                <p class="font-weight-bolder"><strong> Computer Network </strong></p>
+                                <p>Computer Sciencea and Engineering</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row ">
+                                    <div class=" col-md-12 text-primary "><p class="text-center"></p>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-12 text-danger text-center"><p class="text-center"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row  mt-1">
+                            <div class="col-md-12">
+
+                                <div class="row  border">
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Question </strong> <br> 22</p></div>
+                                    <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Total Marks </strong> <br> 100 </p></div>
+                                    <div class="col-md-5 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p
+                                            class="ml-1 text-left">
+                                        <strong>Obtain </strong><br> 70 </p></div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-auto">
+                            <button type="button" class="btn btn-secondary btn-circle ">Download Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+{%endblock%}
+
+
+

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid black;
+  padding: 4px;
+}
+
+th {
+font-size: 13px;
+text-align: center;
+}
+
+td {
+font-size: 13px;
+text-align: center;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+{%if admin %}
+<p style="font-size: 16px;"><strong>All Student Information</strong></p>
+{%elif hod %}
+      <p style="font-size: 16px;"><strong>{{department}} Department Information</strong></p>
+
+{%elif boc %}
+      <p style="font-size: 16px;"><strong>{{year}} Batch Information</strong></p>
+
+{%endif%}
+    <p> {{request.user.email}}</p>
+	  <hr>
+<table id="customers" style="width: 100%">
+  <tr>
+    <th style="width: 5%;">Sl No.</th>
+    <th>Name</th>
+    <th>Email</th>
+          <th>Registration No</th>
+    <th>University Roll No</th>
+      <th style="width: 10%;">Year</th>
+    <th style="width: 10%;">Semester</th>
+
+  </tr>
+    {%for usr in users%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{usr.first_name}} {{usr.last_name}}</td>
+          <td>{{usr.email}} </td>
+          <td>{{usr.registration_no}} </td>
+          <td>{{usr.university_roll}} </td>
+          <td>{{usr.year}} </td>
+          <td>{{usr.semester}} </td>
+
+      </tr>
+    {%endfor%}
+
+</table>
+
+</body>
+</html>

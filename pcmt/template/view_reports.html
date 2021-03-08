@@ -1,0 +1,138 @@
+{%extends 'base.html' %}
+{%load static%}
+{%load index %}
+{%block sidebar %}
+{%include 'side.html' %}
+{%endblock %}
+
+{%block content%}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <style>
+    body{
+    background-color: #f6f6f6 !important;
+    }
+        .bg-white {
+            background-color: #fff !important;
+        }
+
+    </style>
+</head>
+
+
+<div class="col-md-12  mt-3">
+    <div><h1 class="text-left font-weight-bolder mb-3 text-dark"><strong>View Report</strong></h1></div>
+    <!--        bread crumb-->
+    <div class="shadow-sm p-3 mb-5 bg-white rounded">
+        <h1 class="text-center font-weight-bolder text-secondary mb-5 mt-4">Continuous Assessment Reports </h1>
+        <hr>
+        <div class="row ml-auto">
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="1" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 1</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="2" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 2</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="3" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 3</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="4" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 4</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="5" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 5</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="6" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 6</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="7" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 7</button>
+                </form>
+            </div>
+            <div class="col-md-1 ml-4">
+                <form method="post">{%csrf_token%}<input type="number" name="semester" value="8" hidden>
+                    <button type="submit" class="btn btn-secondary rounded ">Semester 8</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {%for ca in ca_test%}
+    <div class="card mb-4">
+
+        <div class="shadow-sm   rounded  col-md-12 ">
+            <div class="row  pt-3 bg-white">
+                <div class="col-md-1">
+                    <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle" alt="...">
+                </div>
+                <div class="col-md-5 ">
+                    <p class="font-weight-bolder"><strong> Continuous Assessment {{ca}} </strong></p>
+                    <p><strong>{{request.user.department}} {{semester}}</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row ">
+                        <div class=" col-md-12 text-secondary "><p class="text-center"><strong>
+                         <div class="col-md-6  bg-white rounded mt-2 ml-auto form-check form-check-inline">
+
+                            <form method="post" action="{%url 'college:download_report'%}">
+                                {%csrf_token%}
+                                <input type="hidden" name="percentage" value="0">
+                                <input type="hidden" name="ca" value="{{ca}}">
+                                <input type="hidden" name="semester" value="{{semester}}">
+                                <button class="btn btn-secondary  btn-circle mx-auto">Download  Report</button>
+                            </form>
+
+                        </div>
+                        </strong></p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    {%endfor%}
+</div>
+</div>
+
+
+<script>
+    function semester(num) {
+
+    }
+
+
+</script>
+
+{%endblock%}
+
+
+
+
+
+
+

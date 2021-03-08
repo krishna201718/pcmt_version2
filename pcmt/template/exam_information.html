@@ -1,0 +1,139 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block sidebar %}
+{%include 'side.html' %}
+{%endblock %}
+
+{%block content%}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+<div class="single-col-form shadow-sm p-3 mb-4 bg-white rounded mt-3 mr-2 col-md-12">
+    <p class="text-left font-weight-bolder "> Exam Details
+</div>
+
+
+<div class="card pmd-card single-col-form col-md-10 mr-2">
+    <form method="post">
+        {%csrf_token%}
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3 ">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label>Email</label>
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="email" placeholder="Email" name="email"
+                                   value="{{request.user.email}}" readonly>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-2 ">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label>Semester</label>
+                        <select name="semester" class="form-control" id="semester">
+                            <option selected> select</option>
+                            {%for sem in sem_list%}
+                            <option value="{{sem}}">{{sem}}</option>
+                            {%endfor%}
+
+                        </select>
+                    </div>
+                    <span class="pmd-textfield-focused"></span>
+                </div>
+                <div class="col-3 ml-5">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label>Subject</label>
+                        <select name="subject" class="form-control" id="subject"
+                                data-branches-url="{%url 'college:add_question_load_subject' %}">
+                            <option selected> select</option>
+
+                        </select>
+                    </div>
+                    <span class="pmd-textfield-focused"></span>
+                </div>
+                <div class="col-3 ">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label>Continuous assessment</label>
+                        <select name="ca" class="form-control" id="ca" required>
+                            <option value="1">Continuous assessment 1</option>
+                            <option value="2">Continuous assessment 2</option>
+                            <option value="3">Continuous assessment 3</option>
+                            <option value="4">Continuous assessment 4</option>
+
+                        </select>
+                    </div>
+                    <span class="pmd-textfield-focused"></span>
+                </div>
+
+<!--Total Mark-->
+                <div class="col-12 ">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label>Total mark</label>
+                        <input type="text" name="total_mark" class="form-control" required>
+                    </div>
+                    <span class="pmd-textfield-focused"></span>
+                </div>
+<!--Total Question-->
+                <div class="col-12 ">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label>Total Question</label>
+                        <input type="text" name="total_question" class="form-control" required>
+                    </div>
+                    <span class="pmd-textfield-focused"></span>
+                </div>
+                <div class="col-12 ">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+
+                        <!-- Success message -->
+                        {%if msg%}
+                        <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                        </div>
+                        {%endif%}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4 "></div>
+            <div class="col-md-4 ">
+                <button type="submit" class="btn btn-secondary btn-block rounded"> Add</button>
+            </div>
+            <div class="col-md-4 "></div>
+        </div>
+
+    </form>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+
+    $("#semester").change(function () {
+    var url = $("#subject").attr("data-branches-url");
+    var semester = $(this).val();
+    console.log(semester);
+    mail = '{{request.user.email}}';
+     $.ajax({
+        url: url,
+        data: {
+          'semester': semester,
+          'email': mail,
+        },
+        success: function (data) {
+          $("#subject").html(data);
+        }
+      });
+
+    });
+
+</script>
+
+
+{%endblock %}

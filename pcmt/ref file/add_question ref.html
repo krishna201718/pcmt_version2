@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>    <div class="single-col-form shadow-sm p-3 mb-4 bg-white rounded mt-3 mr-2 col-md-12">
+    <p class="text-left font-weight-bolder "> Add Question
+</div>
+
+
+    <div class="card pmd-card single-col-form col-md-10 mr-2">
+        <form method="post">
+            {%csrf_token%}
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Email</label>
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="email" placeholder="Email" name="email"
+                                       value="{{request.user.email}}" readonly>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-2 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Semester</label>
+                            <select name="semester" class="form-control" id="semester"
+                                    data-branches-url="{%url 'college:load_semester' %}">
+                                <option selected> select</option>
+                                {%for sem in sem_list%}
+                                <option value="{{sem}}">{{sem}}</option>
+                                {%endfor%}
+
+                            </select>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-3 ml-5">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Subject</label>
+                            <select name="subject" class="form-control" id="subject"
+                                    data-branches-url="{%url 'college:add_question_load_subject' %}">
+                                <option selected> select</option>
+
+                            </select>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-3 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Continuous assessment</label>
+                            <select name="ca" class="form-control" id="ca" required>
+                                <option value="1">Continuous assessment 1</option>
+                                <option value="2">Continuous assessment 2</option>
+                                <option value="3">Continuous assessment 3</option>
+                                <option value="4">Continuous assessment 4</option>
+
+                            </select>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+
+<!--question-->
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Question</label>
+                            <input type="text" name="question" class="form-control" required>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Choice 1</label>
+                            <input type="text" name="choice_1" class="form-control" required>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Choice 2</label>
+                            <input type="text" name="choice_2" class="form-control" required>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label>Choice 3</label>
+                            <input type="text" name="choice_3" class="form-control" required>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label> Choice 4</label>
+                            <input type="text" name="choice_4" class="form-control" required>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                            <label> Correct answer in Number * <strong class="text-danger">(1 - 4)</strong></label>
+                            <input type="number" name="correct" class="form-control" required>
+                        </div>
+                        <span class="pmd-textfield-focused"></span>
+                    </div>
+
+
+                    <div class="col-12 ">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+
+                            <!-- Success message -->
+                            {%if msg%}
+                            <div class="alert alert-{{color}}" role="alert" id="success_message"><i
+                                    class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.
+                            </div>
+                            {%endif%}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 "></div>
+                <div class="col-md-4 ">
+                    <button type="submit" class="btn btn-secondary btn-block rounded"> Add</button>
+                </div>
+                <div class="col-md-4 "></div>
+            </div>
+
+        </form>
+
+    </div>
+</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+{%include "head.html" %}
+<body>
+{%include "navbar.html" %}
+
+	<!-- Header slider -->
+	<header id="head">
+		<div class="container">
+
+					<div class="fluid_container">
+                    <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
+                        <div data-thumb="{%static 'college/images/slides/img1.jpg'%}" data-src="{%static 'college/images/slides/img1.jpg'%}">
+                            <div class="heading-text">
+                              <h1 class="animated flipInY delay1">Online education</h1>
+                              <p></p>
+                            </div>
+                        </div>
+                        <div data-thumb="{%static 'college/images/slides/thumbs/img2.jpg'%}" data-src="{%static 'college/images/slides/img2.jpg'%}">
+                          <div class="heading-text">
+                              <h1 class="animated flipInY delay1">Library</h1>
+                              <p></p>
+                            </div>
+                        </div>
+                        <div data-thumb="{%static 'college/images/slides/thumbs/img3.jpg'%}" data-src="{%static 'college/images/slides/img3.jpg'%}">
+                          <div class="heading-text">
+                              <h1 class="animated flipInY delay1">Achievement</h1>
+                              <p></p>
+                            </div>
+                        </div>
+                        <div data-thumb="{%static 'college/images/slides/thumbs/img4.jpg'%}" data-src="{%static 'college/images/slides/img4.jpg'%}">
+                          <div class="heading-text">
+                              <h1 class="animated flipInY delay1">Sports</h1>
+                              <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		</div>
+	</header>
+	<!-- /Header  slider-->
+
+  <div class="container">
+<!--start course box -->
+    <div class="row">
+					<div class="col-md-3">
+						<div class="grey-box-icon">
+							<div class="icon-box-top grey-box-icon-pos">
+								<img src="{%static 'college/images/1.png'%}" alt="" />
+							</div><!--icon box top -->
+							<h4>Courses</h4>
+							<p> Following course we offer.</p>
+     						<p><a href="#"><em>Read More</em></a></p>
+						</div><!--grey box -->
+					</div><!--/span3-->
+					<div class="col-md-3">
+						<div class="grey-box-icon">
+							<div class="icon-box-top grey-box-icon-pos">
+								<img src="{%static 'college/images/2.png'%}" alt="" />
+							</div><!--icon box top -->
+							<h4>Meet our Staff</h4>
+							<p>Interation session with our teacher.</p>
+     						<p><a href="#"><em>Read More</em></a></p>
+						</div><!--grey box -->
+					</div><!--/span3-->
+					<div class="col-md-3">
+						<div class="grey-box-icon">
+							<div class="icon-box-top grey-box-icon-pos">
+								<img src="{%static 'college/images/3.png'%}" alt="" />
+							</div><!--icon box top -->
+							<h4>Library</h4>
+							<p>Ebook.</p>
+     						<p><a href="#"><em>Read More</em></a></p>
+						</div><!--grey box -->
+					</div><!--/span3-->
+					<div class="col-md-3">
+						<div class="grey-box-icon">
+							<div class="icon-box-top grey-box-icon-pos">
+								<img src="{%static 'college/images/4.png'%}" alt="" />
+							</div><!--icon box top -->
+							<h4>Account</h4>
+							<p>Check Your fees payment.</p>
+     						<p><a href="#"><em>Read More →</em></a></p>
+						</div><!--grey box -->
+					</div><!--/span3-->
+				</div>
+    </div>
+<!--end course box -->
+      <section class="news-box top-margin">
+        <div class="container">
+            <h2><span>New Courses</span></h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="newsBox">
+                        <div class="thumbnail">
+                            <figure><img src="{%static 'college/images/python.jpg'%}" alt=""></figure>
+                            <div class="caption maxheight2">
+                            <div class="box_inner">
+                                        <div class="box">
+                                            <p class="title"><h5>Python Developer</h5></p>
+                                            <p>In contrast to Perl's "there is more than one way to do it" motto, Python embraces a "there should be one—and preferably only one—obvious way to do it" design philosophy.</p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="newsBox">
+                        <div class="thumbnail">
+                            <figure><img src="{%static 'college/images/ardunio.jpg'%}" alt=""></figure>
+                            <div class="caption maxheight2">
+                            <div class="box_inner">
+                                        <div class="box">
+                                            <p class="title"><h5>Ardunio   </h5></p>
+                                            <p>Arduino is officially an open source electronic prototyping system, which is sold with the slogan “So easy, my granny can use it”.</p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="newsBox">
+                        <div class="thumbnail">
+                            <figure><img src="{%static 'college/images/machine.jpg'%}" alt=""></figure>
+                            <div class="caption maxheight2">
+                           <div class="box_inner">
+                                        <div class="box">
+                                            <p class="title"><h5>Machine learning</h5></p>
+                                            <p>“Machine learning will automate jobs that most people thought could only be done by people.” ~Dave Waters.</p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%include "footer.html" %}
+
+</body>
+</html>

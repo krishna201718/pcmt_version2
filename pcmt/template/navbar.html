@@ -1,0 +1,26 @@
+{%load static%}
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				        <!-- Button for smallest screens -->
+        <h1 class="navbar-brand" style="color: #B8B8B8;font-family: 'Oswald', sans-serif; font-size: 50px;"> <a href="{%url 'college:index'%}">PCMT</a></h1>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right mainNav">
+					<li class="active"><a href="{%url 'college:index'%}">Home</a></li>
+					<li><a href="{%url 'college:about' %}">About</a></li>
+					<li><a href="{%url 'college:course' %}">Courses</a></li>
+					<li><a href="#">Admission</a></li>
+					<li><a href="#">Account</a></li>
+          <li><a href="{%url 'college:login' %}">Login</a></li>
+					<li><a href="{%url 'college:contact' %}">Contact</a></li>
+
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<!-- /.navbar -->

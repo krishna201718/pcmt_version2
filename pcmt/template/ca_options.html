@@ -1,0 +1,9 @@
+{%if not Subjects%}
+<option value="" selected >No subject</option>
+{%else%}
+<option value=""> selected </option>
+{% for sub in Subjects %}
+<option value="{{ sub.exam }}">Continuous assessment  {{ sub.exam }}</option>
+{% endfor %}
+
+{%endif%}

@@ -1,0 +1,146 @@
+
+/*
+    background: #6C63FF!important;
+      background-color: #6C63FF!important;
+       #b6b3ff
+*/
+/*
+	  background: #6c757d !important;
+      background-color: #6c757d !important;
+        #d6d9db
+
+      background: #212529 !important;
+      background-color: #212529 !important;
+       #5b6671
+*/
+
+
+:root {
+   --color1: #212529;
+   --color2: #5b6671;
+
+}
+
+.sidebar-submenu li:hover{
+    color: #fff !important;
+    background-color: var(--color2) !important;
+}
+
+.chiller-theme .sidebar-footer {
+     background: var(--color1) !important;
+     box-shadow: 0px -1px 5px var(--color2) !important;
+     border-top: 1px solid var(--color2) !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background: var(--color1) !important;
+      background-color: var(--color1)!important;
+	  color: #fff;
+}
+
+.nav-pills a {
+
+	  color: black;
+}
+
+
+ .btn-secondary , #navbarHeader , .navbar-dark , footer  {
+
+      background: var(--color1) !important;
+      background-color: var(--color1)!important;
+	  color: #fff;
+}
+
+#footer a {
+    color: #fff !important;
+}
+
+#footer.fa i{
+color: #fff;
+}
+
+h2{
+    font-size: 36px;
+    font-weight: bold;
+    color: black !important;
+}
+
+.sidebar-content  {
+      background: var(--color1) !important;
+      background-color: var(--color1) !important;
+      color: #fff !important;
+}
+
+.sidebar-menu.fa i{
+    background: var(--color1) !important;
+    background-color: var(--color1) !important;
+    color: #fff;
+}
+
+.sidebar-menu i{
+    background: var(--color1) !important;
+    background-color: var(--color1) !important;
+    color: #fff;
+}
+
+
+.sidebar-menu a  {
+      color: #fff !important;
+}
+
+.search-menu {
+    color: var(--color1) !important;
+}
+
+.search-menu::placeholder {
+  color: var(--color1) !important;
+}
+
+.chiller-theme .sidebar-wrapper .sidebar-header, .chiller-theme .sidebar-wrapper .sidebar-search, .chiller-theme .sidebar-wrapper .sidebar-menu {
+     border-top: 1px solid var(--color1) !important;
+}
+
+
+
+.header-menu span{
+    color: #fff !important;
+}
+
+.input-group-text i {
+    background: white !important;
+    color: var(--color1) !important;
+}
+
+.input-group-text{
+background: white !important;
+}
+
+.input-group input {
+    background: white !important;
+    color: #fff;
+}
+
+
+.user-status span{
+    color: #fff !important;
+}
+
+.input-group  {
+background: var(--color1) !important;
+color: #fff !important;
+}
+
+.sidebar-brand a{
+color: #fff !important;
+}
+
+
+
+.sidebar-menu ul {
+background: var(--color1) !important;
+}
+
+.sidebar-footer i, .sidebar-footer{
+background: var(--color1) !important;
+color: #fff;
+}

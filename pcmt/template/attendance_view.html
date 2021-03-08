@@ -1,0 +1,279 @@
+
+{%extends 'base.html' %}
+{%load static%}
+{%block sidebar %}
+    {%include 'side.html' %}
+{%endblock %}
+
+{%block content%}
+<!--content area start-->
+<section class="component-section" id="employee">
+    <div class="d-flex align-items-center pb-3">
+        <div>
+            <!-- Title -->
+            <h2>Student Attendance</h2>
+            <!-- End Title -->
+            <!--breadcrum start-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb pmd-breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Student Attendance</li>
+                </ol>
+            </nav>
+            <!--breadcrum end-->
+        </div>
+
+
+    </div>
+        <div class="card pmd-card">
+            <div class="search-bar card-body">
+                <div class="row d-flex align-items-center">
+                    <div class="col">
+                        <!-- Form Component -->
+                        <div class="d-md-block d-none">
+                            <form class="search-form" style="margin-top: -10px;">
+                                <div class="form-row">
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
+                                            <label for="department">Year</label>
+                                            <select name="select" id="department" class="form-control">
+                                                <option></option>
+                                                <option>2015</option>
+                                                <option>2016</option>
+                                                <option>2017</option>
+                                                <option>2018</option>
+                                                <option>2019</option>
+                                            </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
+                                        <label>Semester</label>
+                                        <select name="select" id="designation" class="form-control">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                        </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+                                    <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
+                                        <label>Subject</label>
+                                        <select name="select" id="designation" class="form-control">
+                                            <option></option>
+                                            <option>C programming</option>
+                                            <option>DBMS</option>
+                                            <option>Computer Network</option>
+                                            <option>Software Engineering</option>
+
+                                        </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+                                    <div class="col-md-1 col-lg-2 mt-4">
+                                        <button class="btn btn-primary pmd-ripple-effect pmd-btn-raised" id="search">Go</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <h3 class="card-title advanced-search-title mb-0">Advanced Search</h3>
+                        </div>
+                        <!-- Form Component End -->
+
+                        <!-- Mobile Search -->
+                        <!-- Form Component (Form Inline) -->
+                        <form class="d-flex d-md-none media align-items-center col">
+                            <div class="media-body">
+                                <div class="input-group pmd-input-group pmd-input-group-icon mb-0">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="material-icons md-dark pmd-sm">search</i>
+                                        </div>
+                                    </div>
+                                    <div class="pmd-textfield pmd-textfield-floating-label">
+                                        <label for="search-field">Search</label>
+                                        <input type="text" class="form-control" id="search-field" aria-describedby="search-field"><span class="pmd-textfield-focused"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 d-flex mobile-fixed-btn pmd-z-depth-light-2-2">
+                                <a title="Filter" href="javascript:void(0);" class="btn btn-primary pmd-ripple-effect pmd-btn-icon mb-0 w-50" data-toggle="modal" data-target="#advanced-search-modal">
+                                    <i class="pmd-icon-xs">
+                                        <svg viewBox="0 0 24 24">
+                                            <g><g>
+                                                <path fill="#FFFFFF" d="M9.072,21.162v-9.81L2.214,3.41C1.847,2.961,1.889,2.037,2.837,2.037h18.292
+                                                        c0.892,0,1.098,0.816,0.624,1.373l-6.693,7.732v6.069c0,0.248-0.083,0.458-0.293,0.624l-4.28,3.95
+                                                        C9.992,22.151,9.072,21.954,9.072,21.162z M4.668,3.703l5.864,6.775c0.124,0.165,0.207,0.334,0.207,0.54v8.272l2.659-2.412v-6.024
+                                                        c0-0.207,0.083-0.375,0.206-0.541l5.694-6.61H4.668L4.668,3.703z"></path>
+                                            </g></g>
+                                        </svg>
+                                    </i> Filter
+                                </a>
+                                <a title="Sort" href="javascript:void(0);" class="btn btn-dark pmd-ripple-effect pmd-btn-icon mb-0 w-50" data-toggle="modal" data-target="#sort-modal">
+                                    <i class="material-icons">sort</i>Sort
+                                </a>
+                            </div>
+                        </form>
+                        <!-- Form Component End -->
+                        <!-- Mobile Search End -->
+                    </div>
+                    <!-- Right Menu -->
+                    <div class="col-auto d-none d-md-flex justify-content-end">
+                        <ul class="nav border-0">
+                            <li class="nav-item mr-2">
+                                <a title="Advance Search" class="btn pmd-btn-fab btn-outline-dark nav-link btn-sm" data-toggle="collapse" href="#advanceSearch" role="button" aria-expanded="false" aria-controls="advanceSearch" id="advanced-search-toggler">
+                                    <i class="pmd-icon-circle pmd-icon-sm">
+                                        <svg viewBox="0 0 24 24">
+                                            <g><g>
+                                                <path d="M9.072,21.162v-9.81L2.214,3.41C1.847,2.961,1.889,2.037,2.837,2.037h18.292
+                                                        c0.892,0,1.098,0.816,0.624,1.373l-6.693,7.732v6.069c0,0.248-0.083,0.458-0.293,0.624l-4.28,3.95
+                                                        C9.992,22.151,9.072,21.954,9.072,21.162z M4.668,3.703l5.864,6.775c0.124,0.165,0.207,0.334,0.207,0.54v8.272l2.659-2.412v-6.024
+                                                        c0-0.207,0.083-0.375,0.206-0.541l5.694-6.61H4.668L4.668,3.703z"></path>
+                                            </g></g>
+                                        </svg>
+                                    </i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="dropdown pmd-dropdown">
+                                    <a href="javascript:void(0);" role="button" class="pmd-btn-fab btn-outline-dark btn btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Sort">
+                                        <i class="material-icons">sort</i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="false" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="clip: rect(0px, 160px, 0px, 160px); transform: translate3d(-120px, 0px, 0px);">
+                                        <h6 class="dropdown-header">Sort By</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="javascript:void(0);" title="Name" class="dropdown-item">Name</a>
+                                        <a href="javascript:void(0);" title="Sector" class="dropdown-item">Department</a>
+                                        <a href="javascript:void(0);" title="Training Status" class="dropdown-item">Date of Joining</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Advance Search Form -->
+                <div class="collapse" id="advanceSearch">
+                    <div class="row mt-2">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                <label for="employee_ID">University roll no</label>
+                                <input type="text" class="form-control" name="roll_no"><span class="pmd-textfield-focused"></span>
+                            </div>
+                        </div>
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-2 mb-0">
+                                        <label>Semester</label>
+                                        <select name="select" id="designation" class="form-control">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                        </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-2 mb-2">
+                                        <label>Subject</label>
+                                        <select name="select" id="designation" class="form-control">
+                                            <option></option>
+                                            <option>C programming</option>
+                                            <option>DBMS</option>
+                                            <option>Computer Network</option>
+                                            <option>Software Engineering</option>
+
+                                        </select><span class="pmd-textfield-focused"></span>
+                                    </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="javascript:void(0);" title="Apply Filter" class="btn-primary btn pmd-btn-raised pmd-ripple-effect" id="apply-filter">Apply Filter</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Advance Search End -->
+
+                <!-- Filter Tags -->
+                <div class="border-top filter-tags pt-3 mt-4" id="search-filter">
+                    <div class="d-flex align-items-center">
+                        <i class="md-dark">
+                            <svg version="1.1" x="0px" y="0px" viewBox="0 0 32 32" width="32" height="32" enable-background="new 0 0 32 32" xml:space="preserve">
+                                <g>
+                                    <g id="_x36__13_">
+                                        <g>
+                                            <path d="M14.48,23.2H5.6c-0.441,0-0.8,0.358-0.8,0.8s0.358,0.8,0.8,0.8h8.881c0.371,1.825,1.984,3.2,3.92,3.2
+                                                c1.935,0,3.549-1.375,3.919-3.2H26.4c0.441,0,0.8-0.358,0.8-0.8s-0.358-0.8-0.8-0.8h-4.081c-0.37-1.825-1.984-3.2-3.919-3.2
+                                                C16.465,20,14.852,21.375,14.48,23.2z M20.8,24c0,1.326-1.074,2.4-2.399,2.4c-1.326,0-2.4-1.074-2.4-2.4s1.074-2.4,2.4-2.4
+                                                C19.726,21.6,20.8,22.674,20.8,24z M6.48,15.2H5.6c-0.441,0-0.8,0.358-0.8,0.8s0.358,0.8,0.8,0.8H6.48
+                                                C6.852,18.625,8.465,20,10.4,20c1.935,0,3.549-1.375,3.919-3.2H26.4c0.441,0,0.8-0.358,0.8-0.8s-0.358-0.8-0.8-0.8H14.319
+                                                c-0.37-1.826-1.984-3.2-3.919-3.2C8.465,12,6.852,13.375,6.48,15.2z M12.8,16c0,1.326-1.074,2.4-2.399,2.4
+                                                C9.074,18.4,8,17.326,8,16c0-1.326,1.074-2.4,2.4-2.4C11.726,13.6,12.8,14.674,12.8,16z M17.681,7.2H5.6
+                                                C5.158,7.2,4.8,7.559,4.8,8s0.358,0.8,0.8,0.8h12.081c0.371,1.826,1.984,3.2,3.919,3.2c1.936,0,3.549-1.375,3.92-3.2H26.4
+                                                c0.441,0,0.8-0.358,0.8-0.8s-0.358-0.8-0.8-0.8H25.52C25.148,5.375,23.535,4,21.6,4C19.665,4,18.052,5.375,17.681,7.2z M24,8
+                                                c0,1.326-1.074,2.4-2.4,2.4C20.274,10.4,19.2,9.326,19.2,8s1.074-2.4,2.399-2.4C22.926,5.6,24,6.674,24,8z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </i>
+
+                    </div>
+                </div>
+                <!-- Filter Tags End -->
+            </div>
+        </div>
+
+        <div class="tab-content">
+
+            <!-- List View Start -->
+            <div role="tabpanel" class="tab-pane active show" id="listView">
+                <div class="card pmd-card">
+                    <!-- Table -->
+                    <div id="example_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer"><div class="card-header d-flex flex-row"><div class="data-table-title-responsive"><h2 class="card-title">Table Responsive</h2></div><div class="search-paper pmd-textfield ml-auto"><div id="example_filter" class="dataTables_filter"><label><input type="search" class="form-control form-control-sm" placeholder="Search" aria-controls="example"><span class="pmd-textfield-focused"></span></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example" class="table pmd-table table-hover display dt-responsive nowrap dataTable no-footer dtr-column collapsed" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
+                        <thead class="thead-light">
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 216px;" aria-label="Name: activate to sort column ascending">Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 56px;" aria-label="ID: activate to sort column ascending">Subject</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 124px;" aria-label="Phone No: activate to sort column ascending">Total Class</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 128px;" aria-label="Email Address: activate to sort column ascending">Absent</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 110px;" aria-label="Department: activate to sort column ascending">Present</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 0px; display: block;" aria-label="Date of Joining: activate to sort column ascending">Percentage</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label="Actions: activate to sort column ascending">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr role="row" class="odd">
+                                <td data-title="Name" style="">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{%static 'college/images/profile-2.jpg'%}" alt="Profile Picture" class="rounded-circle mr-3" width="40" height="40">
+                                            <div class="media-body">
+                                                Jonathan M. Blackmon
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-title="Designation" class="control sorting_1" style="">Marketing Manager</td>
+                                <td data-title="ID" style="">XYZ-1583</td>
+                                <td data-title="Phone No" style="">+91 97563 53467</td>
+                                <td data-title="Email Address" style=""><a href="mailto:jonathan@xyz.com">jonathan@xyz.com</a></td>
+                                <td data-title="Department" style="">Marketing</td>
+                                <td data-title="Date of Joining" style="display: none;">2<sup>nd</sup> March, 2017</td>
+                                <td data-title="" style="display: none;">
+                                    <a href="employee-detail.html" class="btn pmd-btn-fab pmd-btn-flat btn-primary pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">visibility</i></a>
+                                    <a href="employee-detail.html" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">edit</i></a>
+                                    <a href="javascript:void(0);" title="Delete" class="btn pmd-btn-fab pmd-btn-flat btn-danger pmd-ripple-effect btn-sm" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons pmd-sm">delete_outline</i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table></div></div><div class="card-footer"><div class="pmd-datatable-pagination"><div class="dataTables_length" id="example_length"><label><span class="custom-select-title">Rows per page:</span> <span class="pmd-custom-select"> <select name="example_length" aria-controls="example" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </span></label></div><div class="dataTables_info" id="example_info" role="status" aria-live="polite"> 1 - 10 of 10 </div><div class="dataTables_paginate paging_simple" id="example_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link"> </a></li><li class="paginate_button page-item next disabled" id="example_next"><a href="#" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link"> </a></li></ul></div></div></div></div>
+                </div>
+            </div>
+            <!-- List View End -->
+        </div>
+    </section>
+<!-- content area end -->
+{%endblock%}

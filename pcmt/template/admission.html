@@ -1,0 +1,502 @@
+{%extends "base.html" %}
+{%load static%}
+{%block sidebar%}
+    {%include "side.html" %}
+{%endblock%}
+
+{%block content%}
+<head>
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<div class="container mt-5">
+<center>
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form" enctype="multipart/form-data">
+        {%csrf_token%}
+        <fieldset>
+
+        <!-- Form Name -->
+        <legend><center><h2><b>Registration</b></h2></center></legend><br>
+
+<!-- personal information,first and last name         -->
+        <div class="row g-2 mb-2 ">
+              <label for="exampleFormControlInput1" class="form-label text-left"><h3>Personal Information</h3></label>
+<!--first_name-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="first_name"   required>
+              <label for="floatingInputGrid">First Name</label>
+            </div>
+          </div>
+<!--last_name-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="last Name" name="last_name"   required>
+              <label for="floatingInputGrid">Last Name</label>
+            </div>
+          </div>
+<!--date_of_birth-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="date" class="form-control" id="floatingInputGrid" placeholder="last Name" name="dob"   required>
+              <label for="floatingInputGrid">Date of Birth</label>
+            </div>
+          </div>
+<!--gender -->
+           <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="gender" required>
+                  <option >select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <label for="floatingSelectGrid">Gender</label>
+            </div>
+          </div>
+        </div>
+<!-- end dept selection          -->
+
+<!-- Start Present and permanent Address, contact no -->
+        <div class="row g-2 mb-2">
+<!--Present Address-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Registration no" name="present_address" required>
+              <label for="floatingInputGrid">Present Address</label>
+            </div>
+          </div>
+<!--Permanent Address -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="permanent_address" name="permanent_address"   required>
+              <label for="floatingInputGrid">Permanent Address</label>
+            </div>
+        </div>
+<!--Contact No. -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="contact_no" name="contact_no"   required>
+              <label for="floatingInputGrid">Contact No.</label>
+            </div>
+          </div>
+<!--email -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="email"  class="form-control" id="floatingInputGrid" placeholder="Email" name="email" required>
+              <label for="floatingInputGrid">Email</label>
+            </div>
+          </div>
+        </div>
+<!-- end Present and permanent Address, contact no -->
+
+<!--fathers name and contact no,email,blood group,-->
+        <div class="row g-2 mb-2">
+<!--fathers_name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input  class="form-control" id="floatingInputGrid" placeholder="Fathers Name"  name="fathers_name" required>
+              <label for="floatingInputGrid">Fathers Name</label>
+            </div>
+          </div>
+<!--fathers Contact No. -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input  class="form-control" id="floatingInputGrid" placeholder="fathers_contact_no" name="fathers_contact_no" required>
+              <label for="floatingInputGrid">Fathers Contact No.</label>
+            </div>
+          </div>
+
+<!--Fathers Email.-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input  class="form-control" id="floatingInputGrid" placeholder="Fathers Email." name="fathers_email" required>
+              <label for="floatingInputGrid">Fathers Email.</label>
+            </div>
+          </div>
+<!--Blood Group -->
+           <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="blood_group" required>
+                  <option >Select</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+              </select>
+              <label for="floatingSelectGrid">Blodd Group</label>
+            </div>
+          </div>
+        </div>
+
+<!-- Guardian name, contact no. ,phone relation , and cast-->
+        <div class="row g-2 mb-2">
+<!--Guardian Name,   -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Guardian Name" name="guardian_name"   required>
+              <label for="floatingInputGrid">Guardian Name</label>
+            </div>
+          </div>
+
+<!-- Contact no-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Contact no" name="guardian_contact_no"   required>
+              <label for="floatingInputGrid">Contact no</label>
+            </div>
+          </div>
+<!--Guardian relation-->
+            <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Relation with Guardian" name="relation_with_guardian"   required>
+              <label for="floatingInputGrid">Relation with Guardian </label>
+            </div>
+          </div>
+<!--Cast-->
+           <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="cast" required>
+                  <option value="General">General</option>
+                  <option value="OBC">OBC</option>
+                  <option value="OBC-b">OBC-b</option>
+                  <option value="ST">ST</option>
+                  <option value="SC">SC</option>
+                  <option value="PWD">PWD</option>
+              </select>
+              <label for="floatingSelectGrid">Cast</label>
+            </div>
+          </div>
+        </div>
+
+<!-- Admission category, Entrance type, rank, and aadhar no.-->
+        <div class="row g-2 mb-2">
+<!--Admission category -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Admission category" name="admission_cat"   required>
+              <label for="floatingInputGrid">Admission Categorye</label>
+            </div>
+          </div>
+
+<!-- Entrance type-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Entrance type" name="entrance_type"   required>
+              <label for="floatingInputGrid">Entrance type</label>
+            </div>
+          </div>
+<!--rank-->
+            <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Rank" name="rank"   required>
+              <label for="floatingInputGrid">Rank</label>
+            </div>
+          </div>
+<!--Aadhar No.-->
+            <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="Aadhar No." name="aadhar_no"   required>
+              <label for="floatingInputGrid">Aadhar No.</label>
+            </div>
+          </div>
+        </div>
+
+<!-- Educational information,10th school name, locality,medium,board -->
+        <div class="row g-2 mb-2 ">
+              <label for="exampleFormControlInput1" class="form-label text-left"><h3>Educational Information (10th)</h3></label>
+<!--10th school name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="school_name_10"   required>
+              <label for="floatingInputGrid">School name(10th)</label>
+            </div>
+          </div>
+<!--10th locality name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="locality_10"   required>
+              <label for="floatingInputGrid">Locality name(10th)</label>
+            </div>
+          </div>
+
+<!--10th medium -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="medium_10"   required>
+              <label for="floatingInputGrid">Medium(10th)</label>
+            </div>
+          </div>
+<!--10th Board name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="board_10"   required>
+              <label for="floatingInputGrid">Board(10th)</label>
+            </div>
+          </div>
+        </div>
+
+<!--10th total, marks,percentage,year-->
+        <div class="row g-2 mb-2 ">
+<!--10th total-->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="total_10"   required>
+              <label for="floatingInputGrid">Total (10th)</label>
+            </div>
+          </div>
+<!--Marks (10th) -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="marks_10"   required>
+              <label for="floatingInputGrid">Marks obtain (10th)</label>
+            </div>
+          </div>
+
+<!--10th Percentage (10th) -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="percentage_10"   required>
+              <label for="floatingInputGrid">Percentage (10th)</label>
+            </div>
+          </div>
+<!--10th year -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="passing_year_10"   required>
+              <label for="floatingInputGrid">Passing Year</label>
+            </div>
+          </div>
+        </div>
+
+<!-- 12th or diploma or both-->
+        <div class="row g-2 mb-5 mt-5">
+<!--Admission cateory-->
+           <div class="col-md-4">
+            <div class="form-floating">
+              <select class="form-select" id="exam_type" aria-label="Floating label select example" name="diploma_or_12" required>
+                  <option selected>select</option>
+                  <option value="12th">12th</option>
+                  <option value="diploma">Diploma</option>
+                  <option value="both">Both</option>
+
+              </select>
+              <label for="floatingSelectGrid" class="text-dark"> <strong>12 <sup>th</sup> mark or Diploma</strong></label>
+            </div>
+          </div>
+
+        </div>
+        <div id="twelve">
+<!-- Educational information,12th school name, locality,medium,board -->
+        <div class="row g-2 mb-2 ">
+              <label for="exampleFormControlInput1" class="form-label text-left"><h3>Educational Information (12th)</h3></label>
+<!--12th school name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="school_name_12"   >
+              <label for="floatingInputGrid">School name(12th)</label>
+            </div>
+          </div>
+<!--12th locality name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="locality_12"   >
+              <label for="floatingInputGrid">Locality name(12th)</label>
+            </div>
+          </div>
+
+<!--12th medium -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="medium_12"   >
+              <label for="floatingInputGrid">Medium(12th)</label>
+            </div>
+          </div>
+<!--12th Board name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="board_12"   >
+              <label for="floatingInputGrid">Board(12th)</label>
+            </div>
+          </div>
+        </div>
+
+<!--12th total, marks,percentage,year-->
+        <div class="row g-2 mb-2 " >
+<!--12th school name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="total_12"   >
+              <label for="floatingInputGrid">Total (12th)</label>
+            </div>
+          </div>
+<!--Marks (12th) -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="marks_12"   >
+              <label for="floatingInputGrid">Marks obtain (12th)</label>
+            </div>
+          </div>
+
+<!--12th Percentage (10th) -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="percentage_12"   >
+              <label for="floatingInputGrid">Percentage (12th)</label>
+            </div>
+          </div>
+<!--12th year -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="passing_year_12"   >
+              <label for="floatingInputGrid">Passing Year(12th)</label>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+        <div id="diploma">
+<!-- Educational information,diploma school name, locality,medium,board -->
+        <div class="row g-2 mb-2 ">
+              <label for="exampleFormControlInput1" class="form-label text-left"><h3>Diploma Information </h3></label>
+<!--Diploma school name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="school_name_diploma"   >
+              <label for="floatingInputGrid">School name(Diploma)</label>
+            </div>
+          </div>
+<!--Diploma locality name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="locality_diploma"   >
+              <label for="floatingInputGrid">Locality name(Diploma)</label>
+            </div>
+          </div>
+
+<!--Diploma medium -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="medium_diploma"   >
+              <label for="floatingInputGrid">Mediaum(diploma)</label>
+            </div>
+          </div>
+<!--Diploma Board name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="board_diploma"   >
+              <label for="floatingInputGrid">Board(diploma)</label>
+            </div>
+          </div>
+        </div>
+
+<!--diploma total, marks,percentage,year-->
+        <div class="row g-2 mb-2 " >
+<!--diploma school name -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="total_diploma"   >
+              <label for="floatingInputGrid">Total (diploma)</label>
+            </div>
+          </div>
+<!--Marks (12th) -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="marks_diploma"   >
+              <label for="floatingInputGrid">Marks obtain (diploma)</label>
+            </div>
+          </div>
+
+<!--diploma Percentage (10th) -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="percentage_diploma"   >
+              <label for="floatingInputGrid">Percentage (diploma)</label>
+            </div>
+          </div>
+<!--diploma year -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="passing_year_diploma"   >
+              <label for="floatingInputGrid">Passing Year(diploma)</label>
+            </div>
+          </div>
+        </div>
+
+        </div>
+<!--gap and reason-->
+        <div class="row g-2 mb-2 ">
+<!--Gap -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="gap"   >
+              <label for="floatingInputGrid">Gap</label>
+            </div>
+          </div>
+<!--reason -->
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInputGrid" placeholder="First Name" name="reason"   >
+              <label for="floatingInputGrid">Reason</label>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+<!-- Success message -->
+            {%if msg%}
+                 <div class="alert alert-{{color}}" role="alert" id="success_message"> <i class="glyphicon glyphicon-thumbs-up"></i> {{msg}}!.</div>
+            {%endif%}
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4"><br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+          </div>
+        </div>
+
+        </fieldset>
+</form>
+  </center>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script >
+    $(document).ready(function () {
+
+
+$("#exam_type").change(function(){
+    var check = $(this).val();
+    var x = document.getElementById("twelve");
+    var y = document.getElementById("diploma");
+      if (check =='12th') {
+        x.style.display = "block";
+        y.style.display = "none";
+      }
+      else if (check =='diploma') {
+        x.style.display = "none";
+        y.style.display = "block";
+      }
+      else if (check =='both') {
+       x.style.display = "block";
+       y.style.display = "block";
+      }
+      else {
+        x.style.display = "none";
+        y.style.display = "none";
+      }
+
+});
+});
+
+</script>
+
+{%endblock%}

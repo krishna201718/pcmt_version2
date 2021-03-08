@@ -1,0 +1,158 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+{%include "head.html"%}
+
+<body>
+    <!-- Fixed navbar -->
+ {%include "navbar.html" %}
+    <!-- /.navbar -->
+
+ 	<header id="head" class="secondary">
+            <div class="container">
+                    <h1>About Us</h1>
+                    <p>text here</p>
+                </div>
+    </header>
+
+
+    <!-- container -->
+    <section class="container">
+        <div class="row">
+            <!-- main content -->
+            <section class="col-sm-8 maincontent">
+                <h3>About Us</h3>
+                <p>
+                    <img src="{%static 'college/images/about.jpg' %}" alt="" class="img-rounded pull-right" width="300">
+                    Description.
+                </p>
+
+            </section>
+            <!-- /main -->
+
+            <!-- Sidebar -->
+            <aside class="col-sm-4 sidebar sidebar-right">
+
+                <div class="panel">
+                    <h4>Course</h4>
+                    <ul class="list-unstyled list-spaces">
+                        <li><a href="">Python Developer</a><br>
+                            <span class="small text-muted">In contrast to Perl's "there is more than one way to do it" motto, Python embraces a "there should be one—and preferably only one—obvious way to do it" design philosophy.</span></li>
+                        <li><a href="">Ardunio</a><br>
+                            <span class="small text-muted">Arduino is officially an open source electronic prototyping system, which is sold with the slogan “So easy, my granny can use it”.</span></li>
+                        <li><a href="">Machine learning</a><br>
+                            <span class="small text-muted">“Machine learning will automate jobs that most people thought could only be done by people.” ~Dave Waters.</span></li>
+                    </ul>
+                </div>
+
+            </aside>
+            <!-- /Sidebar -->
+
+        </div>
+    </section>
+    <!-- /container -->
+    <section class="team-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Our Team</h3>
+                    <p>.</p>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+<!-- membar 1 -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{%static 'college/images/profile.png'%}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Krishna Kumar</h4>
+                        <!-- Designation -->
+                        <span class="pos">member 1</span>
+                        <div class="team-socials">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+<!-- membar 2 -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{%static 'college/images/profile.png'%}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Manjima</h4>
+                        <!-- Designation -->
+                        <span class="pos">Membar 4</span>
+                        <div class="team-socials">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+<!-- membar 3 -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{%static 'college/images/profile.png'%}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Khushnuma parveen</h4>
+                        <!-- Designation -->
+                        <span class="pos">member 2</span>
+                        <div class="team-socials">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+<!-- membar 4 -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{%static 'college/images/profile.png'%}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Sucharita Manna</h4>
+                        <!-- Designation -->
+                        <span class="pos">Membar 2</span>
+                        <div class="team-socials">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!--start footer   -->
+{%include "footer.html" %}
+</body>
+</html>
